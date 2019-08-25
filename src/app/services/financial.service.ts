@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Salary } from 'src/app/models/Salary';
+import { Salary } from '../models/Salary';
+import { timeInterval } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -8,26 +9,36 @@ import { Salary } from 'src/app/models/Salary';
 export class FinancialService {
   uri = 'http://localhost:4001/financial';
 
+  
+
+  finalSalObj: Salary;
+
   constructor(private http: HttpClient) { }
 
-  calSalary(calObj){
-    // cal, return salary, basic sal, etf...
-    this.calAttendance();
-    return new Salary(1000, 100, 20, 12, 10);
+  getOT(calObj){
+    let id = calObj.id;
+    let startDate = calObj.startDate;
+    let endDate = calObj.endDate;
+
+    // get OT hours
+    return this.http.get(`${this.uri}/getOT/${id}/${startDate}/${endDate}`);
+
   }
 
-
-  private calAttendance(){
-
+  getSalary(calObj) {
+    let id = calObj.id;
+    return this.http.get(`${this.uri}/getSalary/${id}`);
+   
   }
+       
 
   // get incomes for a time period
-  searchIncomes(dateFrom, dateTo){
+  searchIncomes(dateFrom, dateTo) {
     return this.http.get(`${this.uri}/searchI/${dateFrom}/${dateTo}`);
   }
 
   // add expences to db
-  addExpence(obj){
+  addExpence(obj) {
     const expence = {
       id: obj.id,
       date: obj.date,
@@ -43,29 +54,29 @@ export class FinancialService {
   }
 
   // get expences for a time period
-  searchExpences(dateFrom, dateTo){
+  searchExpences(dateFrom, dateTo) {
     return this.http.get(`${this.uri}/searchE/${dateFrom}/${dateTo}`);
   }
 
   // get money requests
-  getMRequests(){
+  getMRequests() {
     return this.http.get(`${this.uri}/getMRequests`);
   }
 
-  acceptOrRejectMRequest(id: number, command: string){
+  acceptOrRejectMRequest(id: number, command: string) {
     const obj = { reqId: id };
-    
-    if(command == "accept"){
+
+    if (command == "accept") {
       this.http.post(`${this.uri}/acceptMRequest`, obj).subscribe(result => {
         console.log(result);
       });
-    }else if(command == "reject"){
+    } else if (command == "reject") {
       this.http.post(`${this.uri}/rejectMRequest`, obj).subscribe(result => {
         console.log(result);
       });
     }
 
-    
+
   }
 
 

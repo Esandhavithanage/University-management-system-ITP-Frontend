@@ -5,5 +5,5 @@ export interface MoneyRequest{
     description: string,
     status: string,
     empID: string,
-    empName: string
+    employeeName: string
 } 

@@ -23,7 +23,7 @@ export class InsertAttendanceComponent implements OnInit {
       arrivalTime: form.value.aTime,
       exitTime: form.value.eTime
     };
-
+    console.log(this.attendanceObj);
     this.employeeService.addAttendance(this.attendanceObj);
   }
 
