@@ -1,0 +1,60 @@
+<h1>Employee Attendance</h1>
+<br>
+<p>
+    <button class="btn btn-secondary btn-sm" type="button" data-toggle="collapse" data-target="#addForm"
+        aria-expanded="false" aria-controls="addForm" (click)="canselUpdate()">
+        Insert/Edit Attendance
+    </button>
+</p>
+<div class="collapse" id="addForm">
+    <form ngForm #form="ngForm" name="addAttendanceForm" (ngSubmit)="addOrUpdate(form)" required>
+        <label for="empId">Employee ID </label>
+        <input type="text" class="form-control"required>
+        <br>
+        <label for="date">Date </label>
+        <input [(ngModel)]="updateObj.date" class="form-control" #date="ngModel" type="date" id="date" name="date"required>
+        <br>
+        <label for="aTime">Arrival time </label>
+        <input [(ngModel)]="updateObj.arrivalTime" class="form-control" #aTime="ngModel" type="time" id="aTime" name="aTime"required>
+        <br>
+        <label for="eTime">Exit time </label>
+        <input [(ngModel)]="updateObj.exitTime" class="form-control" #eTime="ngModel" type="time" id="eTime" name="eTime"required>
+        <br>
+        <button *ngIf="!isUpdate" class="btn btn-primary btn-sm mr-2" type="submit">ADD</button>
+        <button *ngIf="isUpdate" type="submit">UPDATE</button>
+        <button type="reset" class="btn btn-secondary btn-sm mr-2">RESET</button>
+    </form>
+</div>
+
+
+<table class="table table-sm">
+    <thead>
+        <tr>
+            <th>Employee Id</th>
+            <th>Date</th>
+            <th>Arrival Time</th>
+            <th>Exit Time</th>
+            <th>Edit</th>
+        </tr>
+
+    </thead>
+    <tbody>
+        <tr *ngFor="let attendance of attendances">
+            <td> {{ attendance.empId }} </td>
+            <td> {{ attendance.date }} </td>
+            <td> {{ attendance.arrivalTime }} </td>
+            <td> {{ attendance.exitTime }} </td>
+            <td>
+                <button (click)="edit(attendance)"
+                data-toggle="collapse" data-target="#addForm"
+                aria-expanded="false" aria-controls="addForm">
+                    Edit
+                </button>
+            </td>
+        </tr>
+    </tbody>
+    <tfoot>
+      <p> Total records : {{ totalRecords }} </p>
+      <button>Report</button>
+    </tfoot>
+</table>

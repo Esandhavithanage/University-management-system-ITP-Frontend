@@ -1,21 +1,70 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
-</div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/cli">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
+<div id="nav">
+    <img class="logo" src="./assets/imges/logo.svg" alt="">
+    <ul class="main_right_auth">
+        <button class="login_btn_auth">Login</button>
+    </ul>
+    <ul class="main_right">
 
-<router-outlet></router-outlet>
+
+        <li>
+            <button class="settings_nav"></button>
+        </li>
+        <li class="login_li">
+            <button class="logout_btn"></button>
+        </li>
+
+
+        <li class="avatar_li">
+
+        </li>
+
+        <li class="welcome_text">
+
+            Welcome
+
+            <div class="subtext">steve@apple.com</div>
+        </li>
+
+        <li>
+            <img class="avatar" src="./assets/images/avatar.jpg" />
+        </li>
+
+    </ul>
+</div>
+
+
+<div id="side_nav_container">
+    <ul class="side_ul">
+        <div class="side_nav_c"></div>
+        <li>
+            <a routerLink="home">
+                <i class="fa fa-home"></i>
+                <div class="nav_text">Home</div>
+            </a>
+        </li>
+        <li><a routerLink="financial-cal-salary">Salary Calculation</a></li>
+        <li><a routerLink="financial-manage-income">Income Management</a></li>
+        <li><a routerLink="financial-manage-expences">Expenses Management</a></li>
+        <li><a routerLink="financial-moneyRequests">Accept/Reject Money Request</a></li>
+        <li><a routerLink="student-student">Student</a></li>
+        <li><a routerLink="student-courses">Courses</a></li>
+        <li><a routerLink="student-payments">Payments</a></li>
+        <li><a routerLink="employee-register">Register Employee</a></li>
+        <li><a routerLink="employee-attendance">Attendance</a></li>
+        <li><a routerLink="employee-mRequests">Money Requests</a></li>
+    </ul>
+</div>
+
+
+<div class="centered">
+    <router-outlet></router-outlet>
+</div>
+
+<div class="logout_confirm">
+    <i class="fa fa-question-circle fa-5x align_confirm"></i>
+    <div id="confirm">Are you sure , Do you want to logout ?</div>
+    <div id="confirm_btns">
+        <button id="yes" class="yes">YES</button>
+        <button id="no" class="no">NO</button>
+    </div>
+</div>

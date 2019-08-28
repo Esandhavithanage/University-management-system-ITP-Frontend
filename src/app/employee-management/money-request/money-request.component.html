@@ -1,0 +1,62 @@
+<h1>Money Request</h1>
+<br>
+<p>
+    <button class="btn btn-secondary btn-sm" type="button" data-toggle="collapse" data-target="#addForm"
+        aria-expanded="false" aria-controls="addForm" (click)="canselUpdate()">
+        Send
+    </button>
+</p>
+<div class="collapse" id="addForm">
+    <form ngForm #form="ngForm" name="addAttendanceForm" (ngSubmit)="addOrUpdate(form)">
+        <label for="empId">Employee ID </label>
+        <input [(ngModel)]="updateObj.empId" #empId="ngModel" class="form-control" type="text" id="empId" name="empId"
+        [readonly]="isUpdate">
+        <br>
+        <label for="date">Date </label>
+        <input [(ngModel)]="updateObj.date" #date="ngModel" class="form-control" type="date" id="date" name="date">
+        <br>
+        <label for="description">Description </label>
+        <textarea [(ngModel)]="updateObj.description" rows="3" #description="ngModel" class="form-control" type="time" id="description" name="description">
+        </textarea>
+        <br>
+        <label for="amount">Amount</label>
+        <input [(ngModel)]="updateObj.amount" #amount="ngModel" class="form-control" type="number" id="amount" name="amount">
+        <br>
+        <button *ngIf="!isUpdate" type="submit" class="btn btn-primary btn-sm mr-2" [disabled]="form.invalid">SEND</button>
+        <button *ngIf="isUpdate" type="submit"  class="btn btn-primary btn-sm mr-3" [disabled]="form.invalid">EDIT</button>
+        <button type="reset"  class="btn btn-secondary btn-sm mr-2">RESET</button>
+    </form>
+</div>
+
+
+<table class="table table-sm">
+    <thead>
+        <tr>
+            <th>Employee ID</th>
+            <th>Date</th>
+            <th>Description</th>
+            <th>Amount</th>
+            <th>Edit</th>
+        </tr>
+
+    </thead>
+    <tbody>
+        <tr *ngFor="let request of requests">
+            <td> {{ request.employeeId }} </td>
+            <td> {{ request.date }} </td>
+            <td> {{ request.description }} </td>
+            <td> {{ request.amount }} </td>
+            <td>
+                <button (click)="edit(request)"
+                data-toggle="collapse" data-target="#addForm"
+                aria-expanded="false" aria-controls="addForm">
+                    Edit
+                </button>
+            </td>
+        </tr>
+    </tbody>
+    <tfoot>
+      <p> Total records : {{ totalRecords }} </p>
+      <button>Report</button>
+    </tfoot>
+</table>
