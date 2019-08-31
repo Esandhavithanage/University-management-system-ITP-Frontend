@@ -5,6 +5,11 @@ import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Salary } from 'src/app/models/Salary';
 import { Subscription } from 'rxjs';
 
+export interface Months{
+  no: number, 
+  name: string
+}
+
 @Component({
   selector: 'cal-salary',
   templateUrl: './cal-salary.component.html',
@@ -14,7 +19,7 @@ export class CalSalaryComponent implements OnInit, OnDestroy {
   currentMonth;
   currentYear;
   selectedMonthField: boolean;
-  months: any[] = [
+  months: Months[] = [
     { no: 0, name: "January" }, { no: 1, name: "February" },
     { no: 2, name: "March" }, { no: 3, name: "April" },
     { no: 4, name: "May" }, { no: 5, name: "June" },
@@ -140,8 +145,8 @@ export class CalSalaryComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(){
-    this.subs1.unsubscribe();
-    this.subs2.unsubscribe();
+    //this.subs1.unsubscribe();
+    //this.subs2.unsubscribe();
   }
 
 }

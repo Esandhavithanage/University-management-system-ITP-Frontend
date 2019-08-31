@@ -1,15 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Salary } from '../models/Salary';
-import { timeInterval } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FinancialService {
   uri = 'http://localhost:4001/financial';
-
-  
 
   finalSalObj: Salary;
 

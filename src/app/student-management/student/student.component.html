@@ -1,0 +1,120 @@
+<div class="main">
+  <div id="div1" class="mx-auto">
+    <h1>Student</h1>
+  </div>
+  <br>
+  <div>
+    <p>
+      <button class="btn btn-secondary btn-sm" type="button"
+        (click)="AddUpdateChange()">
+        Add/Update Student
+      </button>
+    </p>
+    <div id="addForm" *ngIf="formOpen">
+      <div class="card card-body" style="width: 35rem;">
+        <form ngForm #addForm="ngForm" (ngSubmit)="addOrUpdate(addForm)">
+          <div class="form-group">
+            <label for="id" class="">ID</label>
+            <input [(ngModel)]="updateObj.id" #id="ngModel" id="id" name="id" type="text"
+              class="form-control form-control-sm" placeholder="Student ID" required [readonly]="isUpdate">
+          </div>
+          <div class="form-group">
+            <label for="name" class="">Name</label>
+            <input [(ngModel)]="updateObj.name" #name="ngModel" id="name" name="name" type="text"
+              class="form-control form-control-sm" placeholder="Student Name" required>
+          </div>
+          <div class="form-group">
+            <label for="nic" class="">NIC</label>
+            <input [(ngModel)]="updateObj.nic" #nic="ngModel" id="nic" name="nic" type="text"
+              class="form-control form-control-sm" placeholder="Student NIC" required>
+          </div>
+          <div>
+            <label for="gender">Gender</label>
+            <select [(ngModel)]="updateObj.gender" #gender="ngModel" class="custom-select form-control form-control-sm"
+              id="gender" name="gender" required>
+              <option selected>select one..</option>
+              <option value="M">Male</option>
+              <option value="F">Female</option>
+              <option value="O">Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="address" class="">Address</label>
+            <textarea [(ngModel)]="updateObj.address" #address="ngModel" class="form-control form-control-sm"
+              id="address" name="address" rows="3" required>
+            </textarea>
+          </div>
+          <div class="form-group">
+            <label for="email" class="">Email</label>
+            <input [(ngModel)]="updateObj.email" #email="ngModel" id="email" name="email" type="email"
+              class="form-control form-control-sm" placeholder="Email" required>
+          </div>
+          <div class="form-group">
+            <label for="pwd" class="">Password</label>
+            <input [(ngModel)]="updateObj.pwd" #pwd="ngModel" id="pwd" name="pwd" type="text"
+              class="form-control form-control-sm" placeholder="Password" required>
+          </div>
+          <div class="form-group">
+            <label for="batchId">Batch ID</label>
+            <input [(ngModel)]="updateObj.batchId" #batchId="ngModel" id="batchId" name="batchId" type="Batch ID"
+              class="form-control form-control-sm" placeholder="Batch ID" required>
+          </div>
+          <div>
+            <button *ngIf="!isUpdate" class="btn btn-primary btn-sm mr-2" [disabled]="addForm.invalid" type="submit">
+              ADD
+            </button>
+            <button *ngIf="isUpdate" class="btn btn-primary btn-sm mr-2" type="submit">
+              UPDATE
+            </button>
+            <button class="btn btn-dark btn-sm" type="reset">
+              RESET
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+
+  <div id="div4" class="mt-5 mr-2">
+    <table class="table table-sm">
+      <thead class="thead-light">
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Name</th>
+          <th scope="col">NIC</th>
+          <th scope="col">Gender</th>
+          <th scope="col">Address</th>
+          <th scope="col">Email</th>
+          <th scope="col">Password</th>
+          <th scope="col">BatchId</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let student of students">
+          <td> {{ student.id }} </td>
+          <td> {{ student.name }} </td>
+          <td> {{ student.nic }} </td>
+          <td> {{ student.gender }} </td>
+          <td> {{ student.address }} </td>
+          <td> {{ student.email }} </td>
+          <td> {{ student.pwd }} </td>
+          <td> {{ student.batchId }} </td>
+          <td>
+            <button class="btn btn-outline-success btn-sm mr-1" id="updateScroll" (click)="updateBtn(student); top()" data-toggle="collapse"
+             >
+              Update
+            </button>
+            <button class="btn btn-outline-danger btn-sm" (click)="deleteBtn(student)">
+              Delete
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div>
+      <p>Total Records : {{ totalRecords }}</p>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,106 @@
+<div class="main">
+  <div id="div1" class="mx-auto">
+    <h1>Courses</h1>
+  </div>
+  <br>
+  <div>
+    <p>
+      <button class="btn btn-secondary btn-sm" type="button"
+        (click)="AddUpdateChange()">
+        Add/Update Courses
+      </button>
+    </p>
+    <div id="addForm" *ngIf="formOpen">
+      <div class="card card-body" style="width: 35rem;">
+        <form ngForm #addForm="ngForm" (ngSubmit)="addOrUpdate(addForm)">
+          <div class="form-group">
+            <label for="id" class="">ID</label>
+            <input [(ngModel)]="updateObj.id" #id="ngModel" id="id" name="id" type="text"
+              class="form-control form-control-sm" placeholder="Course ID" required [readonly]="isUpdate">
+          </div>
+          <div class="form-group">
+            <label for="name" class="">Name</label>
+            <input [(ngModel)]="updateObj.name" #name="ngModel" id="name" name="name" type="text"
+              class="form-control form-control-sm" placeholder="Course Name" required>
+          </div>
+          <div class="form-group">
+            <label for="year" class="">Year</label>
+            <input [(ngModel)]="updateObj.year" #year="ngModel" id="year" name="year" type="text"
+              class="form-control form-control-sm" placeholder="Year" required>
+          </div>
+          <div class="form-group">
+            <label for="gpa" class="">GPA</label>
+            <input [(ngModel)]="updateObj.gpa" #gpa="ngModel" id="gpa" name="gpa" type="gpa"
+              class="form-control form-control-sm" placeholder="GPA" required>
+          </div>
+          <div>
+            <label for="empName">Employee</label>
+            <select [(ngModel)]="updateObj.empName" #empName="ngModel" class="custom-select form-control form-control-sm"
+              id="empName" name="empName" required>
+              <option selected></option>
+              <option *ngFor="let emp of employees"> {{ emp.name }} </option>
+            </select>
+          </div>
+          <div>
+            <label for="dName">Department</label>
+            <select [(ngModel)]="updateObj.dName" #dName="ngModel" class="custom-select form-control form-control-sm"
+              id="dName" name="dName" required>
+              <option selected></option>
+              <option *ngFor="let d of departments"> {{ d.name }} </option>
+            </select>
+          </div>
+          <div class="mt-2">
+            <button *ngIf="!isUpdate" class="btn btn-primary btn-sm mr-2" [disabled]="addForm.invalid" type="submit">
+              ADD
+            </button>
+            <button *ngIf="isUpdate" class="btn btn-primary btn-sm mr-2" type="submit">
+              UPDATE
+            </button>
+            <button class="btn btn-dark btn-sm" type="reset">
+              RESET
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+
+  <div id="div4" class="mt-5 mr-2">
+    <table class="table table-sm">
+      <thead class="thead-light">
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Name</th>
+          <th scope="col">Year</th>
+          <th scope="col">GPA</th>
+          <th scope="col">Employee</th>
+          <th scope="col">Department</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let course of courses">
+          <td> {{ course.id }} </td>
+          <td> {{ course.name }} </td>
+          <td> {{ course.year }} </td>
+          <td> {{ course.gpa }} </td>
+          <td> {{ course.empName }} </td>
+          <td> {{ course.dName }} </td>
+          <td>
+            <button class="btn btn-outline-success btn-sm mr-1" (click)="updateBtn(course); top()"
+              >
+              Update
+            </button>
+            <button class="btn btn-outline-danger btn-sm" (click)="deleteBtn(course)">
+              Delete
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div>
+      <p>Total Records : {{ totalRecords }}</p>
+    </div>
+  </div>
+</div>

@@ -3,4 +3,5 @@ export class Attendance{
     public date: string;
     public arrivalTime: string;
     public exitTime: string;
+    public empId: string;
 }

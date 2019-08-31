@@ -34,7 +34,6 @@
             <thead class="thead-light">
                 <tr>
                     <th scope="col">Course ID</th>
-                    <th scope="col">Title</th>
                     <th scope="col">Date</th>
                     <th scope="col">Amount</th>
                 </tr>
@@ -42,7 +41,6 @@
             <tbody>
                 <tr *ngFor="let income of filteredIncomes">
                     <td> {{ income.courseId }} </td>
-                    <td> {{ income.title }} </td>
                     <td> {{ income.date }} </td>
                     <td> {{ income.amount }} </td>
                 </tr>

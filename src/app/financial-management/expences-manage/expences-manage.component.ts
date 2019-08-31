@@ -1,15 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { FinancialService } from 'src/app/services/financial.service';
 import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Expence } from 'src/app/models/Expence';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'expences-manage',
   templateUrl: './expences-manage.component.html',
   styleUrls: ['./expences-manage.component.css']
 })
-export class ExpencesManageComponent implements OnInit {
+export class ExpencesManageComponent implements OnInit, OnDestroy {
   tableActive: boolean = false;
   filteredExpenses: Expence[] = [];
   dateFrom;
@@ -17,6 +18,7 @@ export class ExpencesManageComponent implements OnInit {
   totalAmount = 0;
   totalRecords = 0;
   printObj;
+  subs1: Subscription;
 
   constructor(
     private financialService: FinancialService,
@@ -45,8 +47,9 @@ export class ExpencesManageComponent implements OnInit {
   search(form){
     this.dateFrom = form.value.dateFrom;
     this.dateTo = form.value.dateTo;
-    this.financialService.searchExpences(this.dateFrom, this.dateTo).subscribe(expence => {
+    this.subs1 = this.financialService.searchExpences(this.dateFrom, this.dateTo).subscribe(expence => {
       for(let i in expence){
+        console.log(expence);
         this.filteredExpenses.push(expence[i]);
       }
 
@@ -71,6 +74,10 @@ export class ExpencesManageComponent implements OnInit {
 
     this.modelService.open(popupContent, { centered: true });
 
+  }
+
+  ngOnDestroy(){
+    //this.subs1.unsubscribe();
   }
 
 }

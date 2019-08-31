@@ -1,18 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FinancialService } from 'src/app/services/financial.service';
 import { MoneyRequest } from 'src/app/models/MoneyRequestF';
 import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'a-r-money-requests',
   templateUrl: './a-r-money-requests.component.html',
   styleUrls: ['./a-r-money-requests.component.css']
 })
-export class ARMoneyRequestsComponent implements OnInit {
+export class ARMoneyRequestsComponent implements OnInit, OnDestroy {
   mRequests: MoneyRequest[] = [];
   filteredMRequests: MoneyRequest[] = [];
   popoverObj = {};
   tempRecord: MoneyRequest;
+  subs1: Subscription;
 
   constructor(private financialService: FinancialService,
     private config: NgbModalConfig,
@@ -23,7 +25,7 @@ export class ARMoneyRequestsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.financialService.getMRequests().subscribe(result => {
+    this.subs1 = this.financialService.getMRequests().subscribe(result => {
       // console.log(result);
 
       for (let r in result) {
@@ -114,6 +116,10 @@ export class ARMoneyRequestsComponent implements OnInit {
     this.filteredMRequests =  this.accordingRecords(tempArray);
     this.financialService.acceptOrRejectMRequest(this.tempRecord.moneyRequestId, "reject");
     this.modelService.dismissAll();
+  }
+
+  ngOnDestroy(){
+    this.subs1.unsubscribe();
   }
 
 }

@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FinancialService } from 'src/app/services/financial.service';
 import { NgForm } from '@angular/forms';
 import { Income } from 'src/app/models/Income';
 import { map } from 'rxjs/operators';
 import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { Subscription } from 'rxjs';
 //import { MdbTableDirective, MdbTablePaginationComponent } from 'ng-uikit-pro-standard';
 
 @Component({
@@ -11,7 +12,7 @@ import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
   templateUrl: './income-manage.component.html',
   styleUrls: ['./income-manage.component.css']
 })
-export class IncomeManageComponent implements OnInit {
+export class IncomeManageComponent implements OnInit, OnDestroy {
 
   tableActive: boolean = false;
   filteredIncomes: Income[] = [];
@@ -20,6 +21,7 @@ export class IncomeManageComponent implements OnInit {
   printObj = {};
   fromDate;
   toDate;
+  subs1: Subscription;
 
   constructor(private financialService: FinancialService,
     private config: NgbModalConfig,
@@ -33,11 +35,14 @@ export class IncomeManageComponent implements OnInit {
   }
 
   search(form: NgForm){
+    this.filteredIncomes = [];
+    this.totalAmount = 0;
+    this.totalRecords = 0;
     //console.log(form.value);
     this.fromDate = form.value.dateFrom;
     this.toDate = form.value.dateTo;
 
-    this.financialService.searchIncomes(this.fromDate, this.toDate)
+    this.subs1 = this.financialService.searchIncomes(this.fromDate, this.toDate)
     .subscribe(income => {
       
       for(let i in income){
@@ -66,6 +71,10 @@ export class IncomeManageComponent implements OnInit {
 
     this.modelService.open(popupContent, { centered: true });
 
+  }
+
+  ngOnDestroy(){
+    //this.subs1.unsubscribe();
   }
 
 

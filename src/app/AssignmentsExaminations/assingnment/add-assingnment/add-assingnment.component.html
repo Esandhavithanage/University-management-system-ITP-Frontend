@@ -1,0 +1,108 @@
+<div>
+        <div class="card">
+                <div class="card-body">
+
+                    <ng-template [ngIf]="formType == false" [ngIfElse]="edit">
+                        <div>
+                            <form ngForm #form="ngForm" name="addAssignment" (ngSubmit)="add(form)">
+                
+
+                                <div class="form-group">
+                                  <label class="col-md-4">title</label>
+                                  <input ngModel #title="ngModel" id="title" type="text" name="title" class="form-control"
+                                  placeholder="Title..." required/>
+                                </div>
+               
+                        
+                                <div class="form-group">
+                                    <label class="col-md-4">start date</label>
+                                    <input ngModel #startdate="ngModel" id="startdate" type="date" name="startdate" class="form-control"
+                                    placeholder="Startdate..." required/>
+                                  </div>
+                   
+            
+                                <div class="form-group">
+                                  <label class="col-md-4">Deadline</label>
+                                  <input ngModel #deadline="ngModel" id="deadline" type="date" name="deadline" class="form-control"
+                                  placeholder="Deadline..." required/>
+                                </div>
+                   
+                                <div class="form-group">
+                                    <label for="sel1">subject</label>
+                                    <select ngModel #subject="ngModel" class="form-control" id="subject" name="subject">
+                                        <option *ngFor="let x of subjects" value="{{x.courseId}}">{{x.name}} </option>
+                                    </select>
+                                  </div>
+            
+                                  <div class="form-group">
+                                        <label for="sel1">Type</label>
+                                        <select class="form-control" ngModel #type="ngModel" name="type" id="type">
+                                            <option value="Assignment">Assignment </option>
+                                            <option value="Quiz">Quiz</option>
+                                        </select>
+                                      </div>
+            
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-primary mr-2" [disabled]="form.invalid">
+                                            create assyment
+                                          </button>
+                                </div>
+                              </form>
+                        </div>
+                      </ng-template>
+                      
+                      <ng-template #edit>
+                        <div>
+                            <form ngForm #editform="ngForm" name="addAssignment" (ngSubmit)="update(editform)">
+                                <input ngModel #id="ngModel" id="id" type="hidden" name="id" class="form-control" required #id [(ngModel)] = "editassisment[0].assinmentId"/>
+
+                                <div class="form-group">
+                                  <label class="col-md-4">title</label>
+                                  <input ngModel #title="ngModel" id="title" type="text" name="title" class="form-control"
+                                  placeholder="Title..." required  #title [(ngModel)] = "editassisment[0].title"/>
+                                </div>
+               
+                        
+                                <div class="form-group">
+                                    <label class="col-md-4">start date</label>
+                                    <input ngModel #startdate="ngModel" id="startdate" type="date" name="startdate" class="form-control"
+                                    placeholder="Startdate..." required #startdate [(ngModel)] = "editassisment[0].startDate"/>
+                                  </div>
+                   
+            
+                                <div class="form-group">
+                                  <label class="col-md-4">Deadline</label>
+                                  <input ngModel #deadline="ngModel" id="deadline" type="date" name="deadline" class="form-control"
+                                  placeholder="Deadline..." required #startdate [(ngModel)] = "editassisment[0].deadline"/>
+                                </div>
+                          
+                        
+                                <div class="form-group">
+                                    <label for="sel1">subject</label>
+                                    <select ngModel #subject="ngModel" class="form-control" id="subject" name="subject" #type [(ngModel)] = "editassisment[0].courseId">
+                                        <option *ngFor="let x of subjects" value="{{x.courseId}}">{{x.name}} </option>
+                                    </select>
+                                  </div>
+            
+                                  <div class="form-group">
+                                        <label for="sel1">Type</label>
+                                        <select class="form-control" ngModel #type="ngModel" name="type" id="type" readonly #type [(ngModel)] = "editassisment[0].type">
+                                            <option value="Assignment">Assignment </option>
+                                            <option value="Quiz">Quiz</option>
+                                        </select>
+                                      </div>
+
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-primary mr-2" [disabled]="editform.invalid">
+                                            update
+                                          </button>
+                                </div>
+                              </form>
+                        </div>
+                      </ng-template>
+
+                
+                </div>
+            
+              </div>  
+</div>

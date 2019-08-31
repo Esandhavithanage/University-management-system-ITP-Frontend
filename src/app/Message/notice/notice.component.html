@@ -1,0 +1,51 @@
+<div style="background-size:cover; background-repeat: no-repeat;">
+        <div class="container">
+            <div class="row" style="margin-top: 10px; margin-bottom: 50px">
+               
+                <div class="col-md-9 col-sm-12" style="background-color:#ffffff; padding: 30px;">
+
+                    <ng-template [ngIf]="formType == false" [ngIfElse]="edit">
+                        <form ngForm #noticeform="ngForm" name="managenotice" (ngSubmit)="add(noticeform)">
+                            <div class="form-group row">
+                                <label for="title" class="col-sm-2 col-form-label">Title</label>
+                                <div class="col-sm-10">
+                                    <input type="text" ngModel #title="ngModel" class="form-control" id="title" placeholder="Title" name="title" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="Description">Description</label>
+                                <textarea ngModel #description="ngModel" class="form-control rounded-0" id="Description" name="Description" rows="3" required></textarea>
+                            </div>    
+                            <button type="submit" class="btn btn-primary" [disabled]="noticeform.invalid">Add</button>
+                        </form>    
+                    </ng-template>
+
+                        <ng-template #edit>
+                            <form ngForm #updatenoticeform="ngForm" name="managenotice" (ngSubmit)="update(updatenoticeform)">
+                                    <input type="hidden" ngModel #id="ngModel" class="form-control" id="id" name="id" required #id [(ngModel)] = "noticeaa[0].noticeId">
+                                <div class="form-group row">
+                                    <label for="title" class="col-sm-2 col-form-label">Title</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" ngModel #title="ngModel" class="form-control" id="title" placeholder="Title" name="title" required #title [(ngModel)] = "noticeaa[0].title" required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="Description">Description</label>
+                                    <textarea ngModel #description="ngModel" class="form-control rounded-0" id="Description" name="Description" rows="3" required #description [(ngModel)] = "noticeaa[0].description" required>
+
+                                    </textarea>
+                                </div>    
+                                <button type="submit" class="btn btn-primary" [disabled]="updatenoticeform.invalid">Update</button>
+                            </form>    
+                        </ng-template>
+
+               
+               
+                </div>
+            </div>
+
+    
+    
+        </div>
+    
+    </div>

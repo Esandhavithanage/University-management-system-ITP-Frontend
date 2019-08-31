@@ -3,6 +3,5 @@ export class Income{
     public amount: number;
     public date: string;
     public courseId: string;
-    public title: string;
     
 }
