@@ -1,0 +1,28 @@
+<table class="table table-hover">
+        <thead>
+        <tr>
+            <td>id</td>
+            <td>question</td>
+            <td>option1</td>
+            <td>option2</td>
+            <td>option3</td>
+            <td>option4 </td>
+            <td>answer</td>
+            <td colspan="2"></td>
+        </tr>
+        </thead>
+      
+        <tbody>
+            <tr *ngFor="let quiz of quizes">
+                <td>{{ quiz.quizId }}</td>
+                <td>{{ quiz.question }}</td>
+                <td>{{ quiz.option1 }}</td>
+                <td>{{ quiz.option2 }}</td>
+                <td>{{ quiz.option3 }}</td>
+                <td>{{ quiz.option4 }}</td>
+                <td>{{ quiz.answer }}</td>
+                <td><a [routerLink]="['edit', quiz.quizId]" class="btn btn-primary">Edit</a></td>
+                <td><a (click) = "deletequiz(quiz.quizId)" class="btn btn-danger">Delete</a></td>
+            </tr>
+        </tbody>
+      </table>

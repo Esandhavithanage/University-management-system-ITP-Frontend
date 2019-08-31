@@ -1,0 +1,71 @@
+<div class="main">
+  <div class="mx-auto" id="div1">
+    <h1>Salary Calculation</h1>
+  </div>
+  <div id="div2">
+    <div class="card col-8">
+      <div class="card-body">
+        <form ngForm #form="ngForm" name="search&cal" (ngSubmit)="calSalary(form, popupContent)">
+          <div>
+            <div class="form-group">
+              <label for="empName" class="">Employee Name</label>
+              <input ngModel #empName="ngModel" id="empName" name="empName" type="text" class="form-control"
+                placeholder="Employee name..." required>
+            </div>
+            <div class="form-group">
+              <label for="empID" class="">Employee ID</label>
+              <input ngModel #empID="ngModel" id="empID" name="empID" type="text" class="form-control"
+                placeholder="Employee id...">
+            </div>
+            <div class="custom-control custom-radio">
+              <input #month1 ngModel class="custom-control-input" type="radio" (change)="monthSelectWay(1)" name="month"
+                id="monthSelect" value="monthSelect" required>
+              <label for="monthSelect" class="custom-control-label">Month select</label>
+              <div class="form-group">
+                <select ngModel #monthSelect="ngModel" class="custom-select form-control-sm" id="monthSelect"
+                  name="monthSelect" [disabled]="!selectedMonthField">
+                  <option value="0">January</option>
+                  <option value="1">Febrary</option>
+                  <option value="2">March</option>
+                  <option value="3">April</option>
+                  <option value="4">May</option>
+                  <option value="5">June</option>
+                  <option value="6">July</option>
+                  <option value="7">August</option>
+                  <option value="8">September</option>
+                  <option value="9">Octomber</option>
+                  <option value="10">November</option>
+                  <option value="11">December</option>
+                </select>
+              </div>
+            </div>
+            <label>or..</label>
+            <div class="custom-control custom-radio">
+              <input ngModel #month2="ngModel" class="custom-control-input" type="radio" [value]="currentMonth"
+                (change)="monthSelectWay(2)" name="month" id="currentMonth">
+              <label class="custom-control-label" for="currentMonth">
+                Current month
+              </label>
+            </div>
+            <br>
+            <div class="form-group">
+              <button type="submit" class="btn btn-primary mr-2" [disabled]="form.invalid">
+                Calculate
+              </button>
+              <button type="reset" class="btn btn-dark">
+                RESET
+              </button>
+            </div>
+            {{ salary }}
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #popupContent>
+  <salary-receipt [printObj]="printObj"></salary-receipt>
+</ng-template>
+  
+ 
