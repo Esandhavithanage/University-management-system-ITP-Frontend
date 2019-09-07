@@ -5,8 +5,8 @@ import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Salary } from 'src/app/models/Salary';
 import { Subscription } from 'rxjs';
 
-export interface Months{
-  no: number, 
+export interface Months {
+  no: number,
   name: string
 }
 
@@ -19,13 +19,7 @@ export class CalSalaryComponent implements OnInit, OnDestroy {
   currentMonth;
   currentYear;
   selectedMonthField: boolean;
-  months: Months[] = [
-    { no: 0, name: "January" }, { no: 1, name: "February" },
-    { no: 2, name: "March" }, { no: 3, name: "April" },
-    { no: 4, name: "May" }, { no: 5, name: "June" },
-    { no: 6, name: "July" }, { no: 7, name: "August" },
-    { no: 8, name: "September" }, { no: 8, name: "October" },
-    { no: 10, name: "November" }, { no: 11, name: "December" } ];
+  months: Months[] = [];
   printObj = {};
   startDate;
   endDate;
@@ -42,41 +36,51 @@ export class CalSalaryComponent implements OnInit, OnDestroy {
 
   subs1: Subscription;
   subs2: Subscription;
-     
+
   constructor(private financialService: FinancialService,
     private config: NgbModalConfig,
     private modelService: NgbModal) {
-      config.backdrop = 'static';
-      config.keyboard = false;
+    config.backdrop = 'static';
+    config.keyboard = false;
   }
 
   ngOnInit() {
+    this.months = [
+      { no: 0, name: "January" }, { no: 1, name: "February" },
+      { no: 2, name: "March" }, { no: 3, name: "April" },
+      { no: 4, name: "May" }, { no: 5, name: "June" },
+      { no: 6, name: "July" }, { no: 7, name: "August" },
+      { no: 8, name: "September" }, { no: 8, name: "October" },
+      { no: 10, name: "November" }, { no: 11, name: "December" }
+    ];
+
     this.selectedMonthField = false;
     this.currentMonth = new Date().getMonth();
     this.currentYear = new Date().getFullYear().toString();
-    
+
   }
 
-  monthSelectWay(val){
-    if(val == 1) this.selectedMonthField = true;
+  monthSelectWay(val) {
+    if (val == 1) this.selectedMonthField = true;
     else this.selectedMonthField = false;
     //console.log(month.checked);
   }
 
-  calSalary(form: NgForm, popupContent){
+  calSalary(form: NgForm, popupContent) {
     let id = form.value.empID;
     let monthS = parseInt(form.value.monthSelect) + 1;
     let monthC = form.value.month + 1;
     let month;
-    
+    console.log(monthC);
 
-    if(!monthS){
+
+    if (!monthS) {
       month = monthC;
-    }else{
+    } else {
       month = monthS;
     }
 
-    if(month < 10){
+    if (month < 10) {
       month = "0" + month;
     }
 
@@ -94,36 +98,38 @@ export class CalSalaryComponent implements OnInit, OnDestroy {
 
     setTimeout(() => {
       console.log(this.salaryObj);
+      console.log(form.value);
+      console.log(this.months[4].name);
 
-      this.printObj = {
-      id: form.value.empID,
-      name: form.value.empName,
-      month: this.months[form.value.month].name,
-      basicSal: this.salaryObj.basicSal,
-      ETF: this.salaryObj.ETF,
-      EPF: this.salaryObj.EPF,
-      OTAmount: this.salaryObj.OTAmount,
-      OTHours: this.salaryObj.OTHours,
-      salary: this.salaryObj.salary
-    };
+      /* this.printObj = {
+        id: form.value.empID,
+        name: form.value.empName,
+        month: this.months[form.value.month],
+        basicSal: this.salaryObj.basicSal,
+        ETF: this.salaryObj.ETF,
+        EPF: this.salaryObj.EPF,
+        OTAmount: this.salaryObj.OTAmount,
+        OTHours: this.salaryObj.OTHours,
+        salary: this.salaryObj.salary
+      }; */
 
-    this.open(popupContent);
+      //this.open(popupContent);
     }, 100);
-     
+
   }
 
-  private getOT(calObj){
+  private getOT(calObj) {
     let result = this.financialService.getOT(calObj);
     this.subs1 = result.subscribe(r => {
       this.OTHours = parseFloat(r.toLocaleString());
     },
-    (err) => console.log(err),
-    () => {
-      this.getSalary(calObj);
-    });
+      (err) => console.log(err),
+      () => {
+        this.getSalary(calObj);
+      });
   }
 
-  private getSalary(calObj){
+  private getSalary(calObj) {
     // get salary
     this.subs2 = this.financialService.getSalary(calObj).subscribe(result => {
       for (let i in result) {
@@ -136,15 +142,15 @@ export class CalSalaryComponent implements OnInit, OnDestroy {
     });
   }
 
-  private open(popupContent){
+  private open(popupContent) {
     this.modelService.open(popupContent, { centered: true });
   }
 
-  close(){
+  close() {
     this.modelService.dismissAll();
   }
 
-  ngOnDestroy(){
+  ngOnDestroy() {
     //this.subs1.unsubscribe();
     //this.subs2.unsubscribe();
   }

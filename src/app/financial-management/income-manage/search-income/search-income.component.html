@@ -1,0 +1,80 @@
+<div id="div2" class="mt-5">
+
+    <div id="div3">
+        <button class="btn btn-outline-dark btn-sm mb-2" type="button" data-toggle="collapse" data-target="#searchForm"
+            aria-expanded="true" aria-controls="searchForm">
+            Search for a time peroid..
+        </button>
+        <div class="collapse show" id="searchForm">
+            <div class="card card-body">
+                <form ngForm #searchForm="ngForm">
+                    <ngb-datepicker #dp (select)="onDateSelection($event)" [displayMonths]="2" [dayTemplate]="t"
+                        outsideDays="hidden">
+                    </ngb-datepicker>
+
+                    <ng-template #t let-date let-focused="focused">
+                        <span class="custom-day" [class.focused]="focused" [class.range]="isRange(date)"
+                            [class.faded]="isHovered(date) || isInside(date)" (mouseenter)="hoveredDate = date"
+                            (mouseleave)="hoveredDate = null">
+                            {{ date.day }}
+                        </span>
+                    </ng-template>
+                    <div>
+                        <button class="btn btn-primary btn-sm mt-2" (click)="search()" type="button"
+                            data-toggle="collapse" data-target="#searchForm" aria-expanded="true"
+                            aria-controls="searchForm">
+                            Search incomes
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<div id="div4" class="mt-5 mr-2" *ngIf="tableActive && totalRecords > 0">
+
+    <div style="text-align: center;">
+        <h4>Income from {{ fromDate2 }} to {{ toDate2 }}</h4>
+    </div>
+
+    <table class="table" id>
+        <thead class="thead-light">
+            <tr>
+                <th scope="col">Course ID</th>
+                <th scope="col">Date</th>
+                <th scope="col">Amount</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let income of filteredIncomes">
+                <td> {{ income.courseId }} </td>
+                <td> {{ income.date }} </td>
+                <td> {{ income.amount }} </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div>
+        <p>Total records : {{ totalRecords }} </p>
+        <p>Total income : {{ totalAmount | currency:'':'Rs.' }}</p>
+    </div>
+
+
+    <div>
+        <button (click)="getReport(popupContent)" class="btn btn-info btn-sm mr-2">Summary</button>
+        <button class="btn btn-success btn-sm" printSectionId="div4" ngxPrint>Detailed Report</button>
+    </div>
+
+</div>
+
+<div *ngIf="totalRecords == 0 && tableActive">
+    <p style="color: brown;">No records.</p>
+</div>
+
+
+<ng-template #popupContent>
+    <income-report [printObj]="printObj"></income-report>
+</ng-template>

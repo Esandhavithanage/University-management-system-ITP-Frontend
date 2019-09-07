@@ -7,6 +7,8 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgxPrintModule } from 'ngx-print';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import {SlimLoadingBarModule} from 'ng2-slim-loading-bar';
+import { DataTablesModule } from 'angular-datatables';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -51,6 +53,8 @@ import { NoticeComponent } from './Message/notice/notice.component';
 import { ViewnoticeComponent } from './Message/viewnotice/viewnotice.component';
 import { ResourceComponent } from './resource-management/resource-management.component';
 import { ResourcesService } from './services/resources.service';
+import { AllIncomeComponent } from './financial-management/income-manage/all-income/all-income.component';
+import { SearchIncomeComponent } from './financial-management/income-manage/search-income/search-income.component';
 
 @NgModule({
   declarations: [
@@ -85,6 +89,8 @@ import { ResourcesService } from './services/resources.service';
     ViewQuizComponent,
     NoticeComponent,
     ViewnoticeComponent,
+    AllIncomeComponent,
+    SearchIncomeComponent,
 
   ],
   imports: [
@@ -97,6 +103,8 @@ import { ResourcesService } from './services/resources.service';
     NgbModule,
     NgxPrintModule,
     FontAwesomeModule,
+    SlimLoadingBarModule,
+    DataTablesModule,
     RouterModule
   ],
   providers: [
@@ -111,8 +119,6 @@ import { ResourcesService } from './services/resources.service';
     NoticeService,
     QuizService,
     ResourcesService
-  ],
-  schemas: [
   ],
   bootstrap: [AppComponent]
 })

@@ -1,61 +1,24 @@
 <div class="main">
-    <div id="div1" class="mx-auto">
-        <h1>Income Calculation</h1>
+    <div id="div1" class="mb-5">
+        <h1>Income</h1>
     </div>
-    <br>
-    <div id="div2" class="mx-auto">
-        <div id="div3">
-            <label>Enter the time period</label>
-            <form ngForm #form="ngForm" class="form-inline" (ngSubmit)="search(form)">
-                <div class="input-group mb-1 mr-sm-4">
-                    <div class="input-group-prepend">
-                        <div class="input-group-text">From</div>
-                    </div>
-                    <input ngModel #dataFrom="ngModel" type="date" class="form-control" id="dateFrom" name="dateFrom"
-                        required>
-                </div>
-                <div class="input-group mb-1 mr-sm-4">
-                    <div class="input-group-prepend">
-                        <div class="input-group-text">To</div>
-                    </div>
-                    <input ngModel #dataTo="ngModel" type="date" class="form-control" id="dateTo" name="dateTo"
-                        required>
-                </div>
-                <div>
-                    <button class="btn btn-primary" [disabled]="form.invalid" type="submit">
-                        Search
-                    </button>
-                </div>
-            </form>
-        </div>
-    </div>
-    <div id="div4" class="mt-5 mr-2" *ngIf="tableActive">
-        <table class="table" id>
-            <thead class="thead-light">
-                <tr>
-                    <th scope="col">Course ID</th>
-                    <th scope="col">Date</th>
-                    <th scope="col">Amount</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let income of filteredIncomes">
-                    <td> {{ income.courseId }} </td>
-                    <td> {{ income.date }} </td>
-                    <td> {{ income.amount }} </td>
-                </tr>
-            </tbody>
-        </table>
-        <div>
-            <p>Total records : {{ totalRecords }} </p>
-            <p>Total income  : {{ totalAmount | currency:'':'Rs.' }}</p>
 
-        </div>
-    </div>
-    <div *ngIf="tableActive">
-        <button (click)="getReport(popupContent)" class="btn btn-info mr-2">Summary</button>
-        <button class="btn btn-success" printSectionId="div4" ngxPrint>Detailed Report</button>
-    </div>
+    <!--tab panel-->
+    <ngb-tabset justify="justified">
+
+        <ngb-tab title="All Income">
+            <ng-template ngbTabContent>
+                <all-income></all-income>
+            </ng-template>
+        </ngb-tab>
+
+        <ngb-tab title="Search Income">
+            <ng-template ngbTabContent>
+               <search-income></search-income>
+            </ng-template>
+        </ngb-tab>
+    </ngb-tabset>
+
 </div>
 
 <ng-template #popupContent>

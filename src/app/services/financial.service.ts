@@ -31,7 +31,12 @@ export class FinancialService {
 
   // get incomes for a time period
   searchIncomes(dateFrom, dateTo) {
-    return this.http.get(`${this.uri}/searchI/${dateFrom}/${dateTo}`);
+    return this.http.get(`${this.uri}/searchIncome/${dateFrom}/${dateTo}`);
+  }
+
+  // get all incomes
+  getAllIncome(){
+    return this.http.get(`${this.uri}/getAllIncome`);
   }
 
   // add expences to db

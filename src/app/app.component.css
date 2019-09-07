@@ -19,6 +19,14 @@
     border-bottom-left-radius: 40px; */
     background:rgba(211, 211, 211, 0.384);
 }
+
+.sticky {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%; 
+  }
+
 .main_right{
     display:inline;
 }
@@ -149,7 +157,7 @@ font-size:12px;
   .centered {
     position: absolute;
     width: 77%;
-    top: 17%;
+    top: 10%;
     left: 18%;
     /* transform: translate(-50%, -50%); */
   }
