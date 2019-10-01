@@ -46,4 +46,12 @@ export class QuizService {
     return this.http.get(`${this.uri}/delete/${id}`);
   }
 
+  getquize(subject){
+    
+      return this.http.get(`${this.uri}/getQuize/${subject}`); 
+    
+  }
+
+
+
 }

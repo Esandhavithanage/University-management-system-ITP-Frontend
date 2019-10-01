@@ -30,9 +30,6 @@ export class ManageBookComponent implements OnInit {
       }
 
     });
-
-
-
   }
 
   canselUpdate() {

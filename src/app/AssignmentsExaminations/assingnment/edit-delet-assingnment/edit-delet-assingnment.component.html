@@ -1,24 +1,57 @@
-<table class="table table-hover">
-    <thead>
-    <tr>
-        <td>id</td>
-        <td>tital</td>
-        <td>startDate</td>
-        <td>deadline</td>
-        <td>courseName</td>
-        <td colspan="2"></td>
-    </tr>
-    </thead>
-  
-    <tbody>
-        <tr *ngFor="let assisment of assisment">
-            <td>{{ assisment.assinmentId }}</td>
-            <td>{{ assisment.title }}</td>
-            <td>{{ assisment.startDate }}</td>
-            <td>{{ assisment.deadline }}</td>
-            <td>{{ assisment.courseName }}</td>
-            <td><a [routerLink]="['edit', assisment.assinmentId]" class="btn btn-primary">Edit</a></td>
-            <td><a (click) = "deleteAssisment(assisment.assinmentId)" class="btn btn-danger">Delete</a></td>
+<div>
+             <form ngForm #form="ngForm" name="searchAssignment" (ngSubmit)="search(form)">
+                <div class="form-row">
+                  <div class="col">
+                               
+                      Subject      <select ngModel #subject="ngModel" class="form-control" id="subject" name="subject" [value]="selectsubject">
+                                     <option *ngFor="let x of subjects" value="{{x.courseId}}">{{x.name}}</option>
+                                  </select>
+                              
+                  </div>
+                  <div class="col">         
+                    Type           <select class="form-control" ngModel #type="ngModel" name="type" id="type" [value]="Assignment">
+                                               <option value="Assignment" selected>Assignment </option>
+                                               <option value="Quiz">Quiz</option>
+                                            </select>
+                  </div>
+                  <div class="col">
+                    <br>
+                        <div class="form-group">
+                                <button type="submit" class="btn btn-primary mr-2">
+                                        Search
+                                </button>
+                            </div>
+                      </div>
+                </div>
+              
+              </form>
+<br><br>
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <td>Id</td>
+            <td>Tital</td>
+            <td>StartDate</td>
+            <td>Deadline</td>
+            <td>CourseName</td>
+            <td *ngIf="isQuiz">Quiz password</td>
+            <td colspan="3"></td>
         </tr>
-    </tbody>
-  </table>
+        </thead>
+      
+
+        <tbody>
+            <tr *ngFor="let assisment of assisment">
+                <td>{{ assisment.assinmentId }}</td>
+                <td>{{ assisment.title }}</td>
+                <td>{{ assisment.startDate }}</td>
+                <td>{{ assisment.deadline }}</td>
+                <td>{{ assisment.courseName }}</td>
+                <td *ngIf="isQuiz">{{ assisment.quizPassword }}</td>
+                <td><a [routerLink]="['edit', assisment.assinmentId]" class="btn btn-primary">Edit</a></td>
+                <td *ngIf="!isQuiz"><a (click) = "downloadAssisment(assisment.title)" class="btn btn-primary">Download</a></td>
+                <td><a (click) = "deleteAssisment(assisment.assinmentId)" class="btn btn-danger">Delete</a></td>
+            </tr>
+        </tbody>
+      </table>
+</div>

@@ -12,7 +12,6 @@ export class ViewAssingnmentComponent implements OnInit {
 
   ngOnInit() {
     this.as.getAssisment('IT2016').subscribe(res => {
-      console.log(res);
       this.subjects=res;
     });
   }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { QuizService } from 'src/app/services/quiz.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup, NgForm } from '@angular/forms';
+import { AssingmentService } from 'src/app/services/assingment.service';
 
 @Component({
   selector: 'edit-quiz',
@@ -11,6 +12,7 @@ import { FormGroup, NgForm } from '@angular/forms';
 export class EditQuizComponent implements OnInit {
   editquiz:any;
   angForm: FormGroup;
+  subjects:any;
   constructor(private qu:QuizService,private route:ActivatedRoute,private router: Router) { }
 
   ngOnInit() {

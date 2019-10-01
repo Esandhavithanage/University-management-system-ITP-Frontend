@@ -1,3 +1,28 @@
-<div>
- 
-</div>
+<div class="mainContainer">
+        <div class="content">
+            <div class="header">
+                <h1>Angular File Upload</h1>
+            </div>
+            <div class="row margin25">
+    
+                <div class="col-md-4">
+    
+                </div>
+                <div class="col-md-4">
+                    <div class="input-group">
+                        <div class="custom-file">
+                            <form>
+                                <input (change)="fileChange($event)" type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
+                            </form>
+                            <label class="custom-file-label" for="inputGroupFile01">{{fileName}}</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                        <div class="input-group-prepend">
+                                <button (click)="upload()" class="input-group-text upload" id="btnUpload">Upload</button>
+                            </div>
+                </div>
+            </div>
+        </div>
+    </div>

@@ -5,5 +5,6 @@ export default class assisment{
     deadline:String;
     courseName:String;
     startDate:String;
+    quizPassword:String;
 
 }

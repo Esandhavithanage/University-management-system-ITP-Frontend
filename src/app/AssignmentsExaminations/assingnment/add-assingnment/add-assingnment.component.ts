@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { log } from 'util';
@@ -14,22 +14,31 @@ export class AddAssingnmentComponent implements OnInit {
   editassisment:any={};
   subjects:any;
   formType:boolean = false;
-  constructor(private fb:FormBuilder,private assisment:AssingmentService,private route:ActivatedRoute,private router: Router) {
+  isQuizSelected:boolean=false;
+  constructor(private fb:FormBuilder,private assisment:AssingmentService,private route:ActivatedRoute,public router: Router) {
     this.createForm();
    }
 
   createForm(){
-  
+    
   }
+
   add(from:NgForm){
     console.log(from.value);
+
     let tital = from.value.title;
     let startdate = from.value.startdate;
     let deadline = from.value.deadline;
     let subject = from.value.subject;
     let type = from.value.type;
 
-    this.assisment.addassisment(tital,startdate,deadline,subject,type);
+    this.assisment.addassisment(tital,startdate,deadline,subject,type).subscribe(res1=>{
+      console.log(res1);
+    });
+
+    if(type == 'Quiz'){
+      this.router.navigate(['addQuiz']);
+    }
   }
 
   update(from:NgForm){
@@ -43,6 +52,8 @@ export class AddAssingnmentComponent implements OnInit {
 
     this.assisment.UpdateAssisment(id,tital,startdate,deadline,subject,type);
   }
+
+
   ngOnInit() {
 
     this.assisment.getsubjects().subscribe(res=>{
