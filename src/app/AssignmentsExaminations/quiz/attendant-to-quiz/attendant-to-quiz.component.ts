@@ -3,18 +3,17 @@ import { QuizService } from 'src/app/services/quiz.service';
 import quiz from 'src/app/models/quiz';
 import { FormBuilder, FormGroup, NgForm } from '@angular/forms';
 
+export interface IHash {
+  [details: string] : string;
+} 
 @Component({
   selector: 'app-attendant-to-quiz',
   templateUrl: './attendant-to-quiz.component.html',
   styleUrls: ['./attendant-to-quiz.component.css']
 })
 
-export interface IHash {
-  [details: string] : string;
-} 
-
 export class AttendantToQuizComponent implements OnInit {
-   myhash:IHash={};
+   myhash = new Map();
    quizlist:any= null;
    forms: FormGroup[] = [];
   constructor(private qu:QuizService,private fb: FormBuilder) { }
@@ -46,8 +45,15 @@ export class AttendantToQuizComponent implements OnInit {
   }
 
   GETdata(sd,evt){
-    this.myhash[sd] = evt;
+
+
+      this.myhash.set(sd,evt)
+    
+
+
 console.log(sd+" "+evt);
+console.log(this.myhash);
+
 }
 
   submitAll(){
