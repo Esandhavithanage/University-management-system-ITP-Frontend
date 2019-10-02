@@ -25,4 +25,22 @@
                 </div>
             </div>
         </div>
+
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <td>File name</td>
+                <td></td>
+            </tr>
+            </thead>
+          
+    
+            <tbody>
+                <tr *ngFor="let x of upodedfiles">
+                    <td>{{x.filename}}</td>
+                    <td><a (click) = "deleteAssisment(x.assinmentId,x.filename)" class="btn btn-danger">Delete</a></td>
+                </tr>
+            </tbody>
+          </table>
+
     </div>

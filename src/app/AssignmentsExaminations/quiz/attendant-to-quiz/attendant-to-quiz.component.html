@@ -1,0 +1,18 @@
+<div>
+    <div *ngFor="let f of forms; let i = index">
+        <form [formGroup]="forms[i]" (ngSubmit)="add(form)">
+
+            <input  type="hidden" formControlName="quizId">
+            <input  formControlName="question">
+            <input type="radio"  value="1" type="radio" name="option" (change)="GETdata(quizlist[i].quizId,1)">{{quizlist[i].option1}}
+            <input type="radio"  value="2" type="radio" name="option" (change)="GETdata(2)">{{quizlist[i].option2}}
+            <input type="radio"  value="3" type="radio" name="option" (change)="GETdata(3)">{{quizlist[i].option3}}
+            <input type="radio"  value="4" type="radio" name="option" (change)="GETdata(4)">{{quizlist[i].option4}}
+            <input  type="hidden" id="val">
+            <button type="submit">Submit</button>
+        </form>
+        <br>
+    </div>  
+    <br>
+    <button type="submit" (click)="submitAll()">Submit all</button>
+</div>

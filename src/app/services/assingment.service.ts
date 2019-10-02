@@ -62,21 +62,22 @@ uploadAssisment(uploadFile,Assessment,StudentID){
   formData.append("myFile",uploadFile);
   formData.append("StudentID",StudentID);
   console.log(formData.get("myFile"));
-
-  return this.http.post(`${this.uri}/uploadFile/${Assessment}`,formData); 
+  return this.http.post(`${this.uri}/uploadFile/${Assessment}/${StudentID}`,formData); 
 }
 
-deleteuploadAssisment(){
-  return this.http.get(`${this.uri}/deleteuploadFile`); 
+deleteuploadAssisment(Assessment,filename,Studentid){
+  return this.http.get(`${this.uri}/deleteuploadFile/${Assessment}/${filename}/${Studentid}`); 
 }
 
 downloadAssisment(assesmentName){
- /*var obj={filename:assesmentName};
-
+ var obj={filename:assesmentName};
   return this.http.get(`${this.uri}/download/${assesmentName}`, { responseType: "blob" }).toPromise().then(blob =>{
     saveAs(blob, "dump.gz"); 
-  }).catch(err => console.error("download error = ", err));*/
+  }).catch(err => console.error("download error = ", err));
 }
 
+getAssismentFiles(Assessment,StudentID){
+  return this.http.get(`${this.uri}/getuploadedfile/${Assessment}/${StudentID}`,{}); 
+}
 
 }
