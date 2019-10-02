@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { saveAs } from 'file-saver';
 
 @Injectable({
   providedIn: 'root'
@@ -18,11 +19,15 @@ export class AssingmentService {
       subject:subject,
       type:type
     };
-    this.http.post(`${this.uri}/add`,obj).subscribe(res => console.log('Done'));
+  return this.http.post(`${this.uri}/add`,obj);
 }
 
- getassisment(){
-   return this.http.get(`${this.uri}`);
+ getassisment(subject,type){
+  const obj = {
+    subject:subject,
+    type:type
+  };
+   return this.http.post(`${this.uri}`,obj);
  }
 
  editAssisment(id){
@@ -51,6 +56,28 @@ getsubjects(){
 
 getAssisment(subjectid){
   return this.http.get(`${this.uri}/getAssisment/${subjectid}`); 
+}
+uploadAssisment(uploadFile,Assessment,StudentID){
+  let formData =new FormData();
+  formData.append("myFile",uploadFile);
+  formData.append("StudentID",StudentID);
+  console.log(formData.get("myFile"));
+  return this.http.post(`${this.uri}/uploadFile/${Assessment}/${StudentID}`,formData); 
+}
+
+deleteuploadAssisment(Assessment,filename,Studentid){
+  return this.http.get(`${this.uri}/deleteuploadFile/${Assessment}/${filename}/${Studentid}`); 
+}
+
+downloadAssisment(assesmentName){
+ var obj={filename:assesmentName};
+  return this.http.get(`${this.uri}/download/${assesmentName}`, { responseType: "blob" }).toPromise().then(blob =>{
+    saveAs(blob, "dump.gz"); 
+  }).catch(err => console.error("download error = ", err));
+}
+
+getAssismentFiles(Assessment,StudentID){
+  return this.http.get(`${this.uri}/getuploadedfile/${Assessment}/${StudentID}`,{}); 
 }
 
 }

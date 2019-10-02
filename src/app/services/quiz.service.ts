@@ -46,4 +46,15 @@ export class QuizService {
     return this.http.get(`${this.uri}/delete/${id}`);
   }
 
+  getquize(subject){
+    
+      return this.http.get(`${this.uri}/getQuize/${subject}`); 
+  }
+
+  getquizquestion(assesment){
+    console.log(assesment)
+    return this.http.get(`${this.uri}/getQuizeToPartisipate/${assesment}`); 
+}
+
+
 }

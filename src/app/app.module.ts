@@ -7,6 +7,7 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgxPrintModule } from 'ngx-print';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { StorageServiceModule} from 'angular-webstorage-service'
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -51,6 +52,7 @@ import { NoticeComponent } from './Message/notice/notice.component';
 import { ViewnoticeComponent } from './Message/viewnotice/viewnotice.component';
 import { ResourceComponent } from './resource-management/resource-management.component';
 import { ResourcesService } from './services/resources.service';
+import { AttendantToQuizComponent } from './AssignmentsExaminations/quiz/attendant-to-quiz/attendant-to-quiz.component';
 
 @NgModule({
   declarations: [
@@ -85,6 +87,7 @@ import { ResourcesService } from './services/resources.service';
     ViewQuizComponent,
     NoticeComponent,
     ViewnoticeComponent,
+    AttendantToQuizComponent,
 
   ],
   imports: [
@@ -97,7 +100,8 @@ import { ResourcesService } from './services/resources.service';
     NgbModule,
     NgxPrintModule,
     FontAwesomeModule,
-    RouterModule
+    RouterModule,
+    StorageServiceModule
   ],
   providers: [
     FinancialService,

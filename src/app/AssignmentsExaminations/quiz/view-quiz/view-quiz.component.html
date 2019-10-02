@@ -1,4 +1,31 @@
-<table class="table table-hover">
+<div>
+        <form ngForm #form="ngForm" name="searchQize" (ngSubmit)="search(form)">
+                <div class="form-row">
+                  <div class="col">
+                               
+                      Subject      <select ngModel #subject="ngModel" class="form-control" id="subject" name="subject" [value]="selectsubject" (change)="selectedsubject(form.value.subject)">
+                                     <option *ngFor="let x of subjects" value="{{x.courseId}}">{{x.name}}</option>
+                                  </select>
+                              
+                  </div>
+                  <div class="col" *ngIf="quize">         
+                        Subject      <select ngModel #quizeid="ngModel" class="form-control" id="quizeid" name="quizeid" [value]="selectquize" (change)="getQuize(form.value.quizeid)">
+                                <option *ngFor="let x of quize" value="{{x.assinmentId}}">{{x.title}}</option>
+                             </select>
+                  </div>
+                  <div class="col">
+                    <br>
+                        <div class="form-group">
+                                <button type="submit" class="btn btn-primary mr-2">
+                                        Search
+                                </button>
+                            </div>
+                      </div>
+                </div>
+              
+              </form>
+    <br><br>
+    <table class="table table-hover">
         <thead>
         <tr>
             <td>id</td>
@@ -26,3 +53,4 @@
             </tr>
         </tbody>
       </table>
+</div>
