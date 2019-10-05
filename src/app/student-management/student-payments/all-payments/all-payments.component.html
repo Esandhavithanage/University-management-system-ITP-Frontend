@@ -1,0 +1,50 @@
+<div id="div4" class="mt-5 mr-2">
+    <table class="table table-sm">
+        <thead class="thead-light">
+            <tr>
+                <th scope="col">Course ID</th>
+                <th scope="col">Date</th>
+                <th scope="col">Amount</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let payment of payments">
+                <td> {{ payment.courseId }} </td>
+                <td> {{ payment.date }} </td>
+                <td> {{ payment.amount }} </td>
+                <td>
+                    <button class="btn btn-outline-success btn-sm mr-1" (click)="updateBtn(payment, popupContent2)">
+              Update
+            </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="mt-5 mb-5 mr-2">
+
+        <div *ngIf="totalRecords > 0">
+            <p>Total records : {{ totalRecords }} </p>
+            <p>Total payments : {{ totalPayments }} </p>
+        </div>
+        <div *ngIf="totalRecords == 0">
+            <p style="color: brown;">No records</p>
+        </div>
+
+    </div>
+</div>
+
+<!--update-->
+<ng-template #popupContent2>
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Update Course</h4>
+        <button type="button" class="close" aria-label="Close" (click)="close()">
+                <span aria-hidden="true">&times;</span>
+            </button>
+    </div>
+    <div class="modal-body">
+        <add-payments [updateObj]="updateObj" [isUpdate]="isUpdate"></add-payments>
+    </div>
+
+</ng-template>

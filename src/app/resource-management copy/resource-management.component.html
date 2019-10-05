@@ -1,0 +1,83 @@
+<div class="main">
+    <div id="div1" class="mx-auto">
+      <h1>Resources</h1>
+    </div>
+    <br>
+    <div>
+      <p>
+        <button class="btn btn-secondary btn-sm" type="button" data-toggle="collapse" data-target="#addForm"
+          aria-expanded="false" aria-controls="addForm" (click)="canselUpdate()">
+          Add/Update Resources
+        </button>
+      </p>
+      <div class="collapse" id="addForm">
+        <div class="card card-body" style="width: 35rem;">
+          <form ngForm #addForm="ngForm" (ngSubmit)="addOrUpdate(addForm)">
+            <div class="form-group">
+              <label for="id" class="">Resource ID</label>
+              <input [(ngModel)]="updateObj.id" #id="ngModel" id="id" name="id" type="text"
+                class="form-control form-control-sm" placeholder="Resource ID" required [readonly]="isUpdate">
+            </div>
+            <div class="form-group">
+              <label for="type" class="">Type</label>
+              <input [(ngModel)]="updateObj.type" #name="ngModel" id="type" name="type" type="text"
+                class="form-control form-control-sm" placeholder="Resource type" required>
+            </div>
+            <div class="form-group">
+              <label for="qty" class="">Qty</label>
+              <input [(ngModel)]="updateObj.qty" #nic="ngModel" id="qty" name="qty" type="text"
+                class="form-control form-control-sm" placeholder="Resource qty" required>
+            </div>
+            <div>
+             
+            
+            
+              <button *ngIf="!isUpdate" class="btn btn-primary btn-sm mr-2" [disabled]="addForm.invalid" type="submit">
+                ADD
+              </button>
+              <button *ngIf="isUpdate" class="btn btn-primary btn-sm mr-2" type="submit">
+                UPDATE
+              </button>
+              <button class="btn btn-dark btn-sm" type="reset">
+                RESET
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  
+  
+    <div id="div4" class="mt-5 mr-2">
+      <table class="table table-sm">
+        <thead class="thead-light">
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Type</th>
+            <th scope="col">Qty</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+           
+          <tr *ngFor="let resource of resources">
+            <td> {{ resource.id }} </td>
+            <td> {{ resource.type }} </td>
+            <td> {{ resource.qty }} </td>
+            <td>
+              <button class="btn btn-outline-success btn-sm mr-1" id="UpdateScroll" (click)="updateBtn(resource)" data-toggle="collapse"
+                data-target="#addForm" aria-expanded="false" aria-controls="addForm">
+                Update
+              </button>
+              <button class="btn btn-outline-danger btn-sm" (click)="deleteBtn(resource)">
+                Delete
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div>
+        <p>Total Records : {{ totalRecords }}</p>
+      </div>
+    </div>
+  </div>

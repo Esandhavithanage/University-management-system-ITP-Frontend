@@ -1,0 +1,55 @@
+<h1>Employee Attendance</h1>
+<br>
+<p class="mb-5">
+    <button class="btn btn-secondary btn-sm" type="button" (click)="add(popupContent2)">
+        Insert Attendance
+    </button>
+</p>
+
+
+
+<table class="table table-sm">
+    <thead class="thead-light">
+        <tr>
+            <th scope="col">Employee Id</th>
+            <th scope="col">Date</th>
+            <th scope="col">Arrival Time</th>
+            <th scope="col">Exit Time</th>
+            <th scope="col">Edit</th>
+        </tr>
+
+    </thead>
+    <tbody>
+        <tr *ngFor="let attendance of attendances">
+            <td> {{ attendance.empId }} </td>
+            <td> {{ attendance.date }} </td>
+            <td> {{ attendance.arrivalTime }} </td>
+            <td> {{ attendance.exitTime }} </td>
+            <td>
+                <button (click)="edit(attendance, popupContent2)" class="btn btn-sm btn-success">
+                    Edit
+                </button>
+            </td>
+        </tr>
+    </tbody>
+    <tfoot>
+        <p> Total records : {{ totalRecords }} </p>
+        <button class="btn btn-sm btn-primary">Report</button>
+    </tfoot>
+</table>
+
+<!--update-->
+<ng-template #popupContent2>
+
+    <div class="modal-header">
+        <h4 *ngIf="!isUpdate" class="modal-title" id="modal-basic-title">Add Attendance</h4>
+        <h4 *ngIf="isUpdate" class="modal-title" id="modal-basic-title">Edit Attendance</h4>
+        <button type="button" class="close" aria-label="Close" (click)="close()">
+                  <span aria-hidden="true">&times;</span>
+              </button>
+    </div>
+    <div class="modal-body">
+        <insert-attendance [updateObj]="updateObj" [isUpdate]="isUpdate"></insert-attendance>
+    </div>
+
+</ng-template>

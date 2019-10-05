@@ -1,0 +1,122 @@
+<h1>Event Manage</h1>
+
+<div>
+    <p class="mt-3 mb-3">
+        <button class="btn btn-secondary btn-sm" type="button"
+            (click)="AddUpdateChange()">
+            Add/Update Events
+        </button>
+    </p>
+    <div class="btn-group mt-3" role="group" aria-label="Basic example">
+        <button type="button" class="btn btn-outline-secondary" (click)="tableSwitch()">Events</button>
+        <button type="button" class="btn btn-outline-secondary" (click)="tableSwitch()">Registered Students</button>
+    </div>
+    <div class="mt-5" id="form" *ngIf="formOpen">
+        <div class="card card-body" style="width: 50rem;">
+            <form ngForm #form="ngForm" (ngSubmit)="addOrUpdate(form)">
+                <div class="form-group">
+                    <label for="id" class="">ID</label>
+                    <input [(ngModel)]="updateObj.id" #ID="ngModel" id="id" name="id" type="text"
+                        class="form-control form-control-sm" placeholder="Event id" required [readonly]="isUpdate">
+                </div>
+                <div class="form-group">
+                    <label for="title" class="">Title</label>
+                    <input [(ngModel)]="updateObj.title" #title="ngModel" title="title" name="title" type="text"
+                        class="form-control form-control-sm" placeholder="Event title" required>
+                </div>
+                <div class="form-group">
+                    <label for="date" class="">Date</label>
+                    <input [(ngModel)]="updateObj.date" #date="ngModel" id="date" name="date" type="date"
+                        class="form-control form-control-sm" required>
+                </div>
+                <div class="form-group">
+                    <label for="description" class="">Description</label>
+                    <textarea [(ngModel)]="updateObj.description" #description="ngModel" rows="10" id="description"
+                        name="description" class="form-control form-control-sm" required>
+                    </textarea>
+                </div>
+                <div class="form-group">
+                    <label for="empId" class="">Employee Id</label>
+                    <input [(ngModel)]="updateObj.employeeId" #empId="ngModel" id="empId" name="empId" type="empId"
+                        class="form-control form-control-sm" placeholder="Employee Id" required>
+                </div>
+
+                <div class="mt-2">
+                    <button *ngIf="!isUpdate" class="btn btn-primary btn-sm mr-2" [disabled]="form.invalid"
+                        type="submit">
+                        ADD
+                    </button>
+                    <button *ngIf="isUpdate" id="updatebtn" class="btn btn-success btn-sm mr-2" type="submit">
+                        UPDATE
+                    </button>
+                    <button class="btn btn-dark btn-sm" type="reset">
+                        RESET
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>
+
+<div id="div4" class="mt-3 mr-2 table-responsive" *ngIf="!tableSwitchValue">
+    <table class="table table-sm">
+        <thead class="thead-light">
+            <tr>
+                <th scope="col">Title</th>
+                <th scope="col">Description</th>
+                <th scope="col">Date</th>
+                <th scope="col">Employee ID</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let event of events">
+                <td> {{ event.title }} </td>
+                <td> {{ event.description }}</td>
+                <td> {{ event.date }} </td>
+                <td> {{ event.employeeId }} </td>
+                <td>
+                    <button class="btn btn-outline-success btn-sm mr-1" (click)="updateBtn(event); top()"
+                    >
+                        Update
+                    </button>
+                    <button class="btn btn-outline-danger btn-sm" (click)="deleteBtn1(event)">
+                        Delete
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div>
+        <p>Total Records : {{ totalRecords }}</p>
+    </div>
+</div>
+
+<div id="div4" class="mt-5 mr-2 table-responsive" *ngIf="tableSwitchValue">
+    <table class="table table-sm">
+        <thead class="thead-light">
+            <tr>
+                <th scope="col">Event</th>
+                <th scope="col">Student</th>
+                <th scope="col">Date</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let rStudent of rStudents">
+                <td> {{ rStudent.eventName }} </td>
+                <td> {{ rStudent.studentName }}</td>
+                <td> {{ rStudent.date }} </td>
+                <td>
+                    <button class="btn btn-outline-danger btn-sm" (click)="deleteBtn2(rStudent)">
+                        Delete
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div>
+        <p>Total Records : {{ totalRecords }}</p>
+    </div>
+</div>
