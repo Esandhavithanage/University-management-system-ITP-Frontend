@@ -1,12 +1,30 @@
 <div>
+        <form ngForm #form="ngForm" name="searchQize" (ngSubmit)="search(form)">
+                <div class="form-row">
+                        <div class="col">
+                                Subject      
+                                <select ngModel #subject="ngModel" class="form-control" id="subject" name="subject" [value]="selectsubject" (change)="getassisment(form.value.subject,form.value.type)">
+                                        <option *ngFor="let x of subjects" value="{{x.courseId}}">{{x.name}}</option>
+                                </select>
+                        </div>
+                        <div class="col">
+                                Type
+                                <select class="form-control" ngModel #type="ngModel" name="type" id="type" [value]="Assignment" (change)="getassisment(form.value.subject,form.value.type)">
+                                        <option value="Assignment" selected>Assignment </option>
+                                        <option value="Quiz">Quiz</option>
+                                </select>
+                        </div>
+                </div>
+        </form>
+
         <ul class="list-group">
                 <ul class="list-group">
                         <option  value="x.courseId"> </option>
-                        <li class="list-group-item" *ngFor="let x of subjects">
-                               <h4> <a href="http://localhost:4200/uploadAssingnment">{{x.title}}</a> </h4>
+                        <li class="list-group-item" *ngFor="let x of subjects1">
+                                <h4> <a href="{{link}}/{{x.assinmentId}}">{{x.title}}</a> </h4>
                                 <h5>Start Date: {{x.startDate}}</h5>
                                 <h5>End Date  : {{x.deadline}}</h5>
                         </li>
-                      </ul>
-              </ul>   
+                </ul>
+        </ul>   
 </div>

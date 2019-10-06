@@ -19,6 +19,7 @@ import { ViewAssingnmentComponent } from './AssignmentsExaminations/assingnment/
 import { ManagemarksComponent } from './AssignmentsExaminations/marks/managemarks/managemarks.component';
 import { AddQuizComponent } from './AssignmentsExaminations/quiz/add-quiz/add-quiz.component';
 import { AttendantToQuizComponent } from './AssignmentsExaminations/quiz/attendant-to-quiz/attendant-to-quiz.component';
+import { LoginToAssingnmentComponent } from './AssignmentsExaminations/quiz/login-to-assingnment/login-to-assingnment.component'
 import { EditQuizComponent } from './AssignmentsExaminations/quiz/edit-quiz/edit-quiz.component';
 import { ViewQuizComponent } from './AssignmentsExaminations/quiz/view-quiz/view-quiz.component';
 import { NoticeComponent } from './Message/notice/notice.component';
@@ -28,6 +29,7 @@ import { ResourceComponent } from './resource-management/resource-management.com
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { StudentComponent } from './student-management/student/student.component';
+import { from } from 'rxjs';
 
 
 const routes: Routes = [
@@ -64,7 +66,8 @@ const routes: Routes = [
   { path: 'updateAssingnment/edit/:id', component: AddAssingnmentComponent },
   { path: 'viewAssingment', component: ViewAssingnmentComponent },
   { path: 'uploadAssingnment', component: UplloadAssingnmentComponent },
-  { path: 'AttendantToQuiz', component: AttendantToQuizComponent },
+  { path: 'AttendantToQuiz/:id', component: AttendantToQuizComponent },
+  { path: 'LogintoQuize/:id' , component: LoginToAssingnmentComponent},
   { path: 'viewQuiz', component: ViewQuizComponent },
   { path: 'addQuiz', component: AddQuizComponent },
   { path: 'viewQuiz/edit/:id', component: EditQuizComponent },
