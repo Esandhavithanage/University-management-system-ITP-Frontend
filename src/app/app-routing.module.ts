@@ -16,6 +16,7 @@ import { AddAssingnmentComponent } from './AssignmentsExaminations/assingnment/a
 import { EditDeletAssingnmentComponent } from './AssignmentsExaminations/assingnment/edit-delet-assingnment/edit-delet-assingnment.component';
 import { UplloadAssingnmentComponent } from './AssignmentsExaminations/assingnment/uplload-assingnment/uplload-assingnment.component';
 import { ViewAssingnmentComponent } from './AssignmentsExaminations/assingnment/view-assingnment/view-assingnment.component';
+import { QuizMarksReportComponent } from './AssignmentsExaminations/assingnment/edit-delet-assingnment/quiz-marks-report/quiz-marks-report.component';
 import { ManagemarksComponent } from './AssignmentsExaminations/marks/managemarks/managemarks.component';
 import { AddQuizComponent } from './AssignmentsExaminations/quiz/add-quiz/add-quiz.component';
 import { AttendantToQuizComponent } from './AssignmentsExaminations/quiz/attendant-to-quiz/attendant-to-quiz.component';
@@ -65,6 +66,7 @@ const routes: Routes = [
   { path: 'viewAssingment', component: ViewAssingnmentComponent },
   { path: 'uploadAssingnment', component: UplloadAssingnmentComponent },
   { path: 'AttendantToQuiz', component: AttendantToQuizComponent },
+  { path: 'QuizMarksReport', component: QuizMarksReportComponent},
   { path: 'viewQuiz', component: ViewQuizComponent },
   { path: 'addQuiz', component: AddQuizComponent },
   { path: 'viewQuiz/edit/:id', component: EditQuizComponent },

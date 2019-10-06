@@ -1,0 +1,22 @@
+<div>
+<div style="align-items: center">
+<h1>Mid semester marks</h1>
+<h4>{{subject}}</h4>
+<table class="table table-hover">
+    <thead>
+    <tr>
+        <td>Student ID</td>
+        <td>Marks</td>
+    </tr>
+    </thead>
+  
+
+    <tbody>
+        <tr *ngFor="let assisment of assisment">
+            <td>{{ assisment.assinmentId }}</td>
+            <td>{{ assisment.title }}</td>
+        </tr>
+    </tbody>
+  </table>
+</div>
+</div>

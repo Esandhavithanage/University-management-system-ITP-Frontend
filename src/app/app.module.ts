@@ -53,6 +53,7 @@ import { ViewnoticeComponent } from './Message/viewnotice/viewnotice.component';
 import { ResourceComponent } from './resource-management/resource-management.component';
 import { ResourcesService } from './services/resources.service';
 import { AttendantToQuizComponent } from './AssignmentsExaminations/quiz/attendant-to-quiz/attendant-to-quiz.component';
+import { QuizMarksReportComponent } from './AssignmentsExaminations/assingnment/edit-delet-assingnment/quiz-marks-report/quiz-marks-report.component';
 
 @NgModule({
   declarations: [
@@ -88,6 +89,7 @@ import { AttendantToQuizComponent } from './AssignmentsExaminations/quiz/attenda
     NoticeComponent,
     ViewnoticeComponent,
     AttendantToQuizComponent,
+    QuizMarksReportComponent,
 
   ],
   imports: [

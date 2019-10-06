@@ -80,4 +80,9 @@ getAssismentFiles(Assessment,StudentID){
   return this.http.get(`${this.uri}/getuploadedfile/${Assessment}/${StudentID}`,{}); 
 }
 
+getStudentmarks(Assisment){
+  var obj = {assisment:Assisment};
+  return this.http.post(`${this.uri}/getMarks`,obj); 
+}
+
 }
