@@ -54,7 +54,21 @@ export class QuizService {
   getquizquestion(assesment){
     console.log(assesment)
     return this.http.get(`${this.uri}/getQuizeToPartisipate/${assesment}`); 
-}
+  }
 
+  participateToQuiz(assesment,studentID,quizanswerlist){   
+    const obj={
+      Assesment:assesment,
+      studentID:studentID,
+      quizanswerlist:JSON.stringify(Array.from(quizanswerlist.entries()))
+    }
+    console.log(obj);
+    return this.http.post(`${this.uri}/saveAssismentAus`,obj);
+  }
+
+
+  quizPasswordCheck(pass,Aid){
+    return this.http.post(`${this.uri}/checkQuizePassword`,{Passowrd:pass,Assesment:Aid});
+  }
 
 }

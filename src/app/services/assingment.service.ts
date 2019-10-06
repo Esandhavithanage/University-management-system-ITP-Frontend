@@ -54,9 +54,14 @@ getsubjects(){
   return this.http.get(`${this.uri}/subject`); 
 }
 
-getAssisment(subjectid){
-  return this.http.get(`${this.uri}/getAssisment/${subjectid}`); 
+getAssisment_submission(subjectid){
+  return this.http.get(`${this.uri}/getAssisment_submission/${subjectid}`); 
 }
+
+getAssisment_quiz(subjectid){
+  return this.http.get(`${this.uri}/getAssisment_quiz/${subjectid}`); 
+}
+
 uploadAssisment(uploadFile,Assessment,StudentID){
   let formData =new FormData();
   formData.append("myFile",uploadFile);
