@@ -21,9 +21,8 @@ export class LibraryService {
   }
 
   addBook(obj){
-    this.http.post(`${this.uri}/addBook`, obj).subscribe(result => {
-      console.log(result);
-    });
+    return this.http.post(`${this.uri}/addBook`, obj);
+
   }
 
   updateBooks(obj){
@@ -33,9 +32,8 @@ export class LibraryService {
 
   deleteBook(id){
     console.log(id);
-    this.http.get(`${this.uri}/deleteBook/${id}`).subscribe(result => {
-      console.log(result);
-    });
+    return this.http.get(`${this.uri}/deleteBook/${id}`);
+
   }
 
   getBorrowRecords(){
@@ -65,6 +63,8 @@ export class LibraryService {
 
       this.http.post(`${this.uri}/addToBorrow`, tempobj).subscribe(result => {
         console.log(result);
+
+        
       });
     });
 
@@ -78,6 +78,26 @@ export class LibraryService {
     this.http.get(`${this.uri}/deleteBorrowRecord/${id}`).subscribe(result => {
       console.log(result);
     });
+  }
+
+  getAuthers(){
+    return this.http.get(`${this.uri}/getAuthers`);
+  }
+
+  addAuther(obj){
+    return this.http.post(`${this.uri}/addAuther`, obj);
+
+  }
+
+  updateAuther(obj){
+    return this.http.post(`${this.uri}/updateAuther`, obj);
+    
+  }
+
+  deleteAuther(id){
+    console.log(id);
+    return this.http.get(`${this.uri}/deleteAuther/${id}`);
+
   }
 
 

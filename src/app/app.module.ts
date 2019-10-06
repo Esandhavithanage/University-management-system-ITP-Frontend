@@ -67,6 +67,8 @@ import { AddPaymentsComponent } from './student-management/student-payments/add-
 import { AllPaymentsComponent } from './student-management/student-payments/all-payments/all-payments.component';
 import { RegisterEmpComponent } from './employee-management/employee/register-emp/register.component';
 import { InsertAttendanceComponent } from './employee-management/attendance/insert-attendance/insert-attendance.component';
+import { BookComponent } from './library-management/manage-book/book/book.component';
+import { AuthorComponent } from './library-management/manage-book/author/author.component';
 
 @NgModule({
   declarations: [
@@ -116,7 +118,9 @@ import { InsertAttendanceComponent } from './employee-management/attendance/inse
     AllPaymentsComponent,
     RegisterComponent,
     RegisterEmpComponent,
-    InsertAttendanceComponent
+    InsertAttendanceComponent,
+    BookComponent,
+    AuthorComponent
   ],
   imports: [
     BrowserModule,

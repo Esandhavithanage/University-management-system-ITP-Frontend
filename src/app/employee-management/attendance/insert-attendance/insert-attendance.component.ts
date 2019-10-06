@@ -4,6 +4,12 @@ import { EmployeeService } from 'src/app/services/employee.service';
 import { Attendance } from 'src/app/models/Attendance';
 import { AttendanceComponent } from '../attendance.component';
 
+export interface Date{
+  year: number;
+  month: number;
+  day: number;
+}
+
 @Component({
   selector: 'insert-attendance',
   templateUrl: './insert-attendance.component.html',
@@ -13,7 +19,11 @@ export class InsertAttendanceComponent implements OnInit {
   atime = {hour: 8, minute: 30};
   etime = {hour: 17, minute: 30};
   meridian = true;
-  date;
+  date: Date = {
+    year: 0,
+    month: 0,
+    day: 0
+  };
 
   tempObj;
   updateObj2 = {};
@@ -30,6 +40,7 @@ export class InsertAttendanceComponent implements OnInit {
   constructor(private employeeService: EmployeeService, private attendance: AttendanceComponent) { }
 
   ngOnInit() {
+
     if (this.isUpdate == true) {
       this.updateObj2 = this.updateObj;
 
@@ -54,6 +65,16 @@ export class InsertAttendanceComponent implements OnInit {
         hour: parseInt(this.updateObj.exitTime.substring(0, 2)),
         minute: parseInt(this.updateObj.exitTime.substring(3, 5))
       };
+    }else{
+      // set current date
+      let date = new Date();
+      let today = date.toJSON().toString();
+      this.date = {
+        year: parseInt(today.substring(0, 4)),
+        month: parseInt(today.substring(5, 7)),
+        day: parseInt(today.substring(8, 10))
+      };
+
     }
     console.log(this.updateObj);
   }
@@ -79,13 +100,13 @@ export class InsertAttendanceComponent implements OnInit {
       if(this.date.month < 10){
         date_m = '0' + this.date.month;
       }else{
-        date_m = this.date.month;
+        date_m = this.date.month.toString();
       }
 
       if(this.date.day < 10){
         date_d = '0' + this.date.day;
       }else{
-        date_d = this.date.day;
+        date_d = this.date.day.toString();
       }
 
       // set times correct format

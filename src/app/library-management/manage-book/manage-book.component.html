@@ -1,94 +1,26 @@
 <div class="main">
-    <div id="div1" class="mx-auto">
-        <h1>Manage Books</h1>
+    <div id="div1" class="mx-auto mb-3">
+        <h1>Books Details & Authors</h1>
     </div>
-    <br>
-    <div>
-        <p>
-            <button class="btn btn-secondary btn-sm" type="button" data-toggle="collapse" data-target="#addForm"
-                aria-expanded="false" aria-controls="addForm" (click)="canselUpdate()">
-                Add/Update Books
-            </button>
-        </p>
-        <div class="collapse" id="addForm">
-            <div class="card card-body" style="width: 35rem;">
-                <form ngForm #addForm="ngForm" (ngSubmit)="addOrUpdate(addForm)">
-                    <div class="form-group">
-                        <label for="bookId" class="">Book ID</label>
-                        <input [(ngModel)]="updateObj.bookId" #bookId="ngModel" id="bookId" name="bookId" type="text"
-                            class="form-control form-control-sm" placeholder="Book ID" required [readonly]="isUpdate">
-                    </div>
-                    <div class="form-group">
-                        <label for="title" class="">Title</label>
-                        <input [(ngModel)]="updateObj.title" #title="ngModel" id="title" name="title" type="text"
-                            class="form-control form-control-sm" placeholder="Book title" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="publisher" class="">Publisher</label>
-                        <input [(ngModel)]="updateObj.publisher" #publisher="ngModel" id="publisher" name="publisher"
-                            type="text" class="form-control form-control-sm" placeholder="Publisher" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="isbm" class="">ISBM</label>
-                        <input [(ngModel)]="updateObj.isbm" #isbm="ngModel" id="isbm" name="isbm" type="text"
-                            class="form-control form-control-sm" placeholder="ISBM" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="authorId" class="">Author Id</label>
-                        <input [(ngModel)]="updateObj.authorId" #authorId="ngModel" id="authorId" name="authorId"
-                            type="text" class="form-control form-control-sm" placeholder="Author Id" required>
-                    </div>
-                    <button *ngIf="!isUpdate" class="btn btn-primary btn-sm mr-2" [disabled]="addForm.invalid"
-                        type="submit">
-                        ADD
-                    </button>
-                    <button *ngIf="isUpdate" class="btn btn-primary btn-sm mr-2" type="submit">
-                        UPDATE
-                    </button>
-                    <button class="btn btn-dark btn-sm" type="reset">
-                        RESET
-                    </button>
-                </form>
-            </div>
-            
-        </div>
-    </div>
+
+    <ngb-tabset justify="justified">
+
+        <ngb-tab title="Books">
+            <ng-template ngbTabContent>
+                <div id="addExpence">
+                    <book></book>
+                </div>
+            </ng-template>
+        </ngb-tab>
+
+        <ngb-tab title="Authors">
+            <ng-template ngbTabContent>
+                <author></author>
+            </ng-template>
+        </ngb-tab>
+
+    </ngb-tabset>
+
+
+
 </div>
-
-
- <div id="div4" class="mt-5 mr-2">
-        <table class="table table-sm">
-            <thead class="thead-light">
-                <tr>
-                    <th scope="col">Book ID</th>
-                    <th scope="col">Title</th>
-                    <th scope="col">Publisher</th>
-                    <th scope="col">ISBM</th>
-                    <th scope="col">Auther Id</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let book of books">
-                    <td> {{ book.bookId }} </td>
-                    <td> {{ book.title }} </td>
-                    <td> {{ book.publisher }} </td>
-                    <td> {{ book.isbm }} </td>
-                    <td> {{ book.authorId }} </td>
-                    <td>
-                        <button class="btn btn-outline-success btn-sm mr-1" id="updateScroll"
-                            (click)="updateBtn(book); top()" data-toggle="collapse" data-target="#addForm"
-                            aria-expanded="false" aria-controls="addForm">
-                            Update
-                        </button>
-                        <button class="btn btn-outline-danger btn-sm" (click)="deleteBtn(book)">
-                            Delete
-                        </button>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <div>
-            <p>Total Records : {{ totalRecords }}</p>
-        </div>
-    </div>

@@ -117,7 +117,6 @@
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
                 <a class="nav-link collapsed" (click)="studentCollapsed = !studentCollapsed" [attr.aria-expanded]="studentCollapsed" aria-controls="collapseSalary">
-
                     <i class="fas fa-fw fa-cog"></i>
                     <span>Student Management</span>
                 </a>
@@ -212,16 +211,16 @@
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed" (click)="newsCollapsed = !newsCollapsed" [attr.aria-expanded]="newsCollapsed" aria-controls="collapseSalary">
+                <a class="nav-link collapsed" (click)="bookCollapsed = !bookCollapsed" [attr.aria-expanded]="bookCollapsed" aria-controls="collapseSalary">
 
                     <i class="fas fa-fw fa-cog"></i>
                     <span>Library</span>
                 </a>
-                <div id="collapseSalary" [ngbCollapse]="!newsCollapsed" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div id="collapseSalary" [ngbCollapse]="!bookCollapsed" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
 
                         <h6 class="collapse-header">Custom Components:</h6>
-                        <a class="collapse-item" routerLink="Library" (click)="bookCollapsed = !bookCollapsed">Manage books</a>
+                        <a class="collapse-item" routerLink="library-manageBook" (click)="bookCollapsed = !bookCollapsed">Manage books</a>
                         <a class="collapse-item" routerLink="library-borrowBook" (click)="bookCollapsed = !bookCollapsed">Borrow books</a>
 
                     </div>

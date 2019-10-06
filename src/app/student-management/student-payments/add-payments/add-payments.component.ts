@@ -4,6 +4,12 @@ import { StudentService } from 'src/app/services/student.service';
 import { Course } from 'src/app/models/Course';
 import { Income } from 'src/app/models/Income';
 
+export interface Date{
+  year: number;
+  month: number;
+  day: number;
+}
+
 @Component({
   selector: 'add-payments',
   templateUrl: './add-payments.component.html',
@@ -12,7 +18,7 @@ import { Income } from 'src/app/models/Income';
 export class AddPaymentsComponent implements OnInit {
   tempObj;
   updateObj2 = {};
-  modelDate = {
+  modelDate: Date = {
     year: 0,
     month: 0,
     day: 0
@@ -39,6 +45,16 @@ export class AddPaymentsComponent implements OnInit {
 
       };
       console.log(this.updateObj2);
+
+    }else{
+      // set current date
+      let date = new Date();
+      let today = date.toJSON().toString();
+      this.modelDate = {
+        year: parseInt(today.substring(0, 4)),
+        month: parseInt(today.substring(5, 7)),
+        day: parseInt(today.substring(8, 10))
+      };
 
     }
 

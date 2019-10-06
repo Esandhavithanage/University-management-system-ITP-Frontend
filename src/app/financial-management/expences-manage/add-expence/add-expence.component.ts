@@ -7,6 +7,12 @@ import { AllExpenceComponent } from '../all-expence/all-expence.component';
 import { SearchExpenceComponent } from '../search-expence/search-expence.component';
 //import { NgbdDatepickerPopup } from './datepicker-popup';
 
+export interface Date{
+  year: number;
+  month: number;
+  day: number;
+}
+
 @Component({
   selector: 'add-expence',
   templateUrl: './add-expence.component.html',
@@ -14,7 +20,11 @@ import { SearchExpenceComponent } from '../search-expence/search-expence.compone
   
 })
 export class AddExpenceComponent implements OnInit {
-  date = null;
+  date: Date = {
+    year: 0,
+    month: 0,
+    day: 0
+  };
   empIdErr: boolean = false;
   isInserted: boolean = false;
   isUpdated: boolean = false;
@@ -44,6 +54,15 @@ export class AddExpenceComponent implements OnInit {
         date: this.date,
         type: this.updateObj1.type,
         amount: this.updateObj1.amount
+      };
+    }else{
+      // set current date
+      let date = new Date();
+      let today = date.toJSON().toString();
+      this.date = {
+        year: parseInt(today.substring(0, 4)),
+        month: parseInt(today.substring(5, 7)),
+        day: parseInt(today.substring(8, 10))
       };
     }
   }
