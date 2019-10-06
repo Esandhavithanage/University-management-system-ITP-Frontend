@@ -1,16 +1,54 @@
 <div>
     <div *ngFor="let f of forms; let i = index">
+
+     <div class="card" style="width: 50rem;">
+       <div class="card-body">
+
+        <div style="
+        border-left-width: 100px;
+        margin-left: 50px;">
         <form [formGroup]="forms[i]">
 
             <input  type="hidden" formControlName="quizId">
-            <input  formControlName="question">
-            <input type="radio"  value="1" type="radio" name="option" (change)="GETdata(quizlist[i].quizId,1)">{{quizlist[i].option1}}
-            <input type="radio"  value="2" type="radio" name="option" (change)="GETdata(quizlist[i].quizId,2)">{{quizlist[i].option2}}
-            <input type="radio"  value="3" type="radio" name="option" (change)="GETdata(quizlist[i].quizId,3)">{{quizlist[i].option3}}
-            <input type="radio"  value="4" type="radio" name="option" (change)="GETdata(quizlist[i].quizId,4)">{{quizlist[i].option4}}
+            <p class="card-text font-weight-bold">{{quizlist[i].question}}</p> <br>
+
+            <div class="col px-md-5"><div class="p-3 border bg-light">
+
+            <div class="custom-control custom-radio">
+                    <input type="radio" value="1" class="custom-control-input" id="customControlValidation2{{i}}" name="option" (change)="GETdata(quizlist[i].quizId,1)" >
+                    <label class="custom-control-label" for="customControlValidation2{{i}}">{{quizlist[i].option1}}</label>
+            </div>
+            <br>
+            <div class="custom-control custom-radio">
+                    <input type="radio" value="2" class="custom-control-input" id="customControlValidation3{{i}}" name="option" (change)="GETdata(quizlist[i].quizId,2)">
+                    <label class="custom-control-label" for="customControlValidation3{{i}}">{{quizlist[i].option2}}</label>
+            </div>
+            <br>
+            <div class="custom-control custom-radio">
+                    <input type="radio" value="3" class="custom-control-input" id="customControlValidation4{{i}}" name="option" (change)="GETdata(quizlist[i].quizId,3)">
+                    <label class="custom-control-label" for="customControlValidation4{{i}}">{{quizlist[i].option3}}</label>
+            </div>
+            <br>
+            <div class="custom-control custom-radio">
+                    <input type="radio" value="4" class="custom-control-input" id="customControlValidation5{{i}}" name="option" (change)="GETdata(quizlist[i].quizId,4)">
+                    <label class="custom-control-label" for="customControlValidation5{{i}}">{{quizlist[i].option4}}</label>
+            </div>
+
+        </div></div>
+
+            <br>
         </form>
+    </div>
         <br>
-    </div>  
+    </div> 
+</div>
+<br>
+</div> 
     <br>
+<<<<<<< HEAD
     <button type="submit" (click)="submitAll()">Submit all</button>
+=======
+    <button type="button" (click)="submitAll()" class="btn btn-lg btn-outline-success">Finish Attend......</button>
+    <br><br>
+>>>>>>> f03f2a16cb569e3d1559351dea40e204f68a4a13
 </div>

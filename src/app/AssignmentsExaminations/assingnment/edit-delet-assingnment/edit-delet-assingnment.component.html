@@ -1,4 +1,5 @@
-<div>
+<div id="componentID">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
              <form ngForm #form="ngForm" name="searchAssignment" (ngSubmit)="search(form)">
                 <div class="form-row">
                   <div class="col">
@@ -50,6 +51,7 @@
                 <td *ngIf="isQuiz">{{ assisment.quizPassword }}</td>
                 <td><a [routerLink]="['edit', assisment.assinmentId]" class="btn btn-primary">Edit</a></td>
                 <td *ngIf="!isQuiz"><a (click) = "downloadAssisment(assisment.title)" class="btn btn-primary">Download</a></td>
+                <td *ngIf="isQuiz"><a (click) = "downloadmarks(assisment.assinmentId)" class="btn btn-primary">Download marks report</a></td>
                 <td><a (click) = "deleteAssisment(assisment.assinmentId)" class="btn btn-danger">Delete</a></td>
             </tr>
         </tbody>
