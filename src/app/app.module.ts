@@ -53,11 +53,8 @@ import { ViewnoticeComponent } from './Message/viewnotice/viewnotice.component';
 import { ResourceComponent } from './resource-management/resource-management.component';
 import { ResourcesService } from './services/resources.service';
 import { AttendantToQuizComponent } from './AssignmentsExaminations/quiz/attendant-to-quiz/attendant-to-quiz.component';
-<<<<<<< HEAD
 import { QuizMarksReportComponent } from './AssignmentsExaminations/assingnment/edit-delet-assingnment/quiz-marks-report/quiz-marks-report.component';
-=======
 import { LoginToAssingnmentComponent } from './AssignmentsExaminations/quiz/login-to-assingnment/login-to-assingnment.component';
->>>>>>> f03f2a16cb569e3d1559351dea40e204f68a4a13
 
 @NgModule({
   declarations: [
@@ -93,11 +90,8 @@ import { LoginToAssingnmentComponent } from './AssignmentsExaminations/quiz/logi
     NoticeComponent,
     ViewnoticeComponent,
     AttendantToQuizComponent,
-<<<<<<< HEAD
     QuizMarksReportComponent,
-=======
     LoginToAssingnmentComponent,
->>>>>>> f03f2a16cb569e3d1559351dea40e204f68a4a13
 
   ],
   imports: [

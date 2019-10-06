@@ -44,9 +44,6 @@ export class AttendantToQuizComponent implements OnInit {
           option3: this.quizlist[i].option3,
           option4: this.quizlist[i].option4
         });
-
-
-    
         this.forms.push(tempForm);
     }
 
@@ -62,8 +59,10 @@ export class AttendantToQuizComponent implements OnInit {
 
   submitAll(){
     console.log(this.myhash);
-    this.qu.participateToQuiz('A1566917394197','IT001',this.myhash).subscribe(res => {
+    this.qu.participateToQuiz(this.AID,'IT001',this.myhash).subscribe(res => {
       console.log(res);
+      alert("answers submitted");
+      this.router.navigate([`viewAssingment`]);
     });
   }
 }

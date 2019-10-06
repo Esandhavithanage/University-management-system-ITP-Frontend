@@ -36,7 +36,12 @@ export class EditQuizComponent implements OnInit {
     let Option3 = from.value.Option3;
     let Option4 = from.value.Option4;
     let answer = from.value.answer;
- this.qu.updateQuiz(id,question,Option1,Option2,Option3,Option4,answer)
+    if(question == "" || Option1 == "" || Option2 == "" || Option3 == "" || Option4 == "" || answer == ""){
+      alert("Please fill all fileds");
+    }else{
+      this.qu.updateQuiz(id,question,Option1,Option2,Option3,Option4,answer);
+      alert("Updated successful")
+    }
   
   }
 

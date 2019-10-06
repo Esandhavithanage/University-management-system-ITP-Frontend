@@ -25,16 +25,17 @@ export class LoginToAssingnmentComponent implements OnInit {
   QuizeLogin(password){
   
     console.log(password);
-
-
-
-    this.qu.quizPasswordCheck(password,this.AID).subscribe(res => {
-     if(res){
-      this.router.navigate([`AttendantToQuiz/${this.AID}`]);
-     }else{
-
-     }
+    if(password == ""){
+      alert("please enter password");
+    }else{
+      this.qu.quizPasswordCheck(password,this.AID).subscribe(res => {
+        if(res){
+          this.router.navigate([`AttendantToQuiz/${this.AID}`]);
+        }else{
+          alert("check your paasword again");
+        }
     });
+  }
     }
 
 }

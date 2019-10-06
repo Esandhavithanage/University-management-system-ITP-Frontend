@@ -1,8 +1,7 @@
 <div>
         <form ngForm #form="ngForm" name="searchQize" (ngSubmit)="search(form)">
                 <div class="form-row">
-                  <div class="col">
-                               
+                  <div class="col">          
                       Subject      <select ngModel #subject="ngModel" class="form-control" id="subject" name="subject" [value]="selectsubject" (change)="selectedsubject(form.value.subject)">
                                      <option *ngFor="let x of subjects" value="{{x.courseId}}">{{x.name}}</option>
                                   </select>

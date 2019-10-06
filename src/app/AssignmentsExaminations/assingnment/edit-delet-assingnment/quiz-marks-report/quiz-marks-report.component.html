@@ -1,22 +1,22 @@
-<div>
+<div id="displymarks">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"/>
 <div style="align-items: center">
 <h1>Mid semester marks</h1>
-<h4>{{subject}}</h4>
-<table class="table table-hover">
+<h4>{{SubjectNmae}} - {{courseId}}</h4>
+<table class="table table-bordered" style="width: 25%">
     <thead>
     <tr>
         <td>Student ID</td>
         <td>Marks</td>
     </tr>
     </thead>
-  
-
     <tbody>
-        <tr *ngFor="let assisment of assisment">
-            <td>{{ assisment.assinmentId }}</td>
-            <td>{{ assisment.title }}</td>
+        <tr *ngFor="let resalt of resalt">
+            <td>{{ resalt.studentId }}</td>
+            <td>{{ resalt.marks }}</td>
         </tr>
     </tbody>
   </table>
+  <a (click) = "downloadmarks()" class="btn btn-danger">Print</a>
 </div>
 </div>

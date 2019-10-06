@@ -15,6 +15,7 @@ export class AddAssingnmentComponent implements OnInit {
   subjects:any;
   formType:boolean = false;
   isQuizSelected:boolean=false;
+  aid:any;
   constructor(private fb:FormBuilder,private assisment:AssingmentService,private route:ActivatedRoute,public router: Router) {
     this.createForm();
    }
@@ -31,14 +32,25 @@ export class AddAssingnmentComponent implements OnInit {
     let deadline = from.value.deadline;
     let subject = from.value.subject;
     let type = from.value.type;
+     
+    if(tital == "" || startdate == "" ||deadline == "" ||subject == "" ||type == ""){
+
+    }else{
 
     this.assisment.addassisment(tital,startdate,deadline,subject,type).subscribe(res1=>{
       console.log(res1);
+     this.aid = res1;
+     console.log('aid '+this.aid);
+     if(type == 'Quiz'){
+      alert("New Quize added");
+
+      this.router.navigate([`addQuiz/${this.aid}`]);
+    }else{
+      alert("New Assignment added");
+    }
     });
 
-    if(type == 'Quiz'){
-      this.router.navigate(['addQuiz']);
-    }
+  }
   }
 
   update(from:NgForm){
@@ -50,7 +62,13 @@ export class AddAssingnmentComponent implements OnInit {
     let subject = from.value.subject;
     let type = from.value.type;
 
-    this.assisment.UpdateAssisment(id,tital,startdate,deadline,subject,type);
+
+    if(tital == "" || startdate == "" ||deadline == "" ||subject == "" ||type == ""){
+
+    }else{
+      this.assisment.UpdateAssisment(id,tital,startdate,deadline,subject,type);
+      alert("Updated sucssesfuly")
+    }
   }
 
 

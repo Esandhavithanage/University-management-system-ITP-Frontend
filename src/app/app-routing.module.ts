@@ -66,16 +66,13 @@ const routes: Routes = [
   { path: 'updateAssingnment', component: EditDeletAssingnmentComponent },
   { path: 'updateAssingnment/edit/:id', component: AddAssingnmentComponent },
   { path: 'viewAssingment', component: ViewAssingnmentComponent },
-  { path: 'uploadAssingnment', component: UplloadAssingnmentComponent },
-<<<<<<< HEAD
+  { path: 'uploadAssingnment/:id', component: UplloadAssingnmentComponent },
   { path: 'AttendantToQuiz', component: AttendantToQuizComponent },
-  { path: 'QuizMarksReport', component: QuizMarksReportComponent},
-=======
+  { path: 'QuizMarksReport/:id', component: QuizMarksReportComponent},
   { path: 'AttendantToQuiz/:id', component: AttendantToQuizComponent },
   { path: 'LogintoQuize/:id' , component: LoginToAssingnmentComponent},
->>>>>>> f03f2a16cb569e3d1559351dea40e204f68a4a13
   { path: 'viewQuiz', component: ViewQuizComponent },
-  { path: 'addQuiz', component: AddQuizComponent },
+  { path: 'addQuiz/:id', component: AddQuizComponent },
   { path: 'viewQuiz/edit/:id', component: EditQuizComponent },
   
   // messaging and notice routes

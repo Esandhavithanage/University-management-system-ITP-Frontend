@@ -54,6 +54,9 @@ getsubjects(){
   return this.http.get(`${this.uri}/subject`); 
 }
 
+getAssisment(subjectid){
+  return this.http.get(`${this.uri}/getAssisment/${subjectid}`); 
+}
 getAssisment_submission(subjectid){
   return this.http.get(`${this.uri}/getAssisment_submission/${subjectid}`); 
 }
@@ -85,9 +88,16 @@ getAssismentFiles(Assessment,StudentID){
   return this.http.get(`${this.uri}/getuploadedfile/${Assessment}/${StudentID}`,{}); 
 }
 
+quizPasswordCheck
+
 getStudentmarks(Assisment){
   var obj = {assisment:Assisment};
-  return this.http.post(`${this.uri}/getMarks`,obj); 
+  return this.http.post(`${this.uri}/getMarks`,obj);
 }
+
+getAssismentDetails(Assisment){
+  return this.http.get(`${this.uri}/getAssismentDetails/${Assisment}`); 
+}
+
 
 }

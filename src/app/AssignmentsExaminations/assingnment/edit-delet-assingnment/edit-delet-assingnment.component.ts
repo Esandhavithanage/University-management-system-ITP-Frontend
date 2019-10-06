@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AssingmentService } from 'src/app/services/assingment.service';
 import assisment from 'src/app/models/assisment';
 import { NgForm } from '@angular/forms';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'edit-delet-assingnment',
@@ -14,7 +15,7 @@ export class EditDeletAssingnmentComponent implements OnInit {
   subjects:any;
   isQuiz:boolean=false;
 
-  constructor(private as:AssingmentService) { }
+  constructor(private as:AssingmentService,private router:Router) { }
 
   ngOnInit() {
     this.as.getsubjects().subscribe(res=>{
@@ -55,13 +56,6 @@ console.log(id);
 
   downloadmarks(assinmentId){
     console.log(assinmentId);
-  const printContent = document.getElementById("componentID");
-const WindowPrt = window.open('', '', 'left=0,top=0,width=900,height=900,toolbar=0,scrollbars=0,status=0');
-WindowPrt.document.write(printContent.innerHTML);
-WindowPrt.document.close();
-WindowPrt.focus();
-WindowPrt.print();
-WindowPrt.close();
-
+    this.router.navigate(['/QuizMarksReport',assinmentId])
   }
 }
