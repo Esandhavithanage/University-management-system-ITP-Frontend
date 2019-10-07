@@ -1,0 +1,1 @@
+function topmenu(e){$("#top_left_menu").children().hide(),0!=e?($("#top_left_menu").animate({width:"400px"}),$("#"+e).fadeIn()):$("#top_left_menu").hide}$(document).ready(function(){});
