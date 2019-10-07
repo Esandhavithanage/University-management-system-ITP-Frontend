@@ -1,0 +1,24 @@
+<div class="main">
+    <div id="div1" class="mx-auto mb-5">
+        <h1>Courses</h1>
+    </div>
+
+    <!--tab panel-->
+    <ngb-tabset justify="justified">
+
+        <ngb-tab title="All Courses">
+            <ng-template ngbTabContent>
+                <all-courses></all-courses>
+            </ng-template>
+        </ngb-tab>
+
+        <ngb-tab title="Add Courses">
+            <ng-template ngbTabContent>
+                <div id="addCourse">
+                    <add-courses></add-courses>
+                </div>
+            </ng-template>
+        </ngb-tab>
+    </ngb-tabset>
+
+</div>

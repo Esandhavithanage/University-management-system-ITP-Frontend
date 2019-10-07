@@ -1,0 +1,60 @@
+<div>
+        <div class="card">
+                <div class="card-body">
+                        <div>
+                            <form ngForm #form="ngForm" name="editQuiz" (ngSubmit)="add(form)">
+
+                                <div class="form-group">
+                                    <label class="col-md-4">Question</label>
+                                    <input ngModel #question="ngModel" id="question" type="text" name="question" class="form-control"
+                                    placeholder="question..." required />
+                                  </div>
+
+                                  <div class="form-group">
+                                      <label class="col-md-4">Option1</label>
+                                      <input ngModel #deadline="ngModel" id="Option1" type="text" name="Option1" class="form-control"
+                                      placeholder="Option1..." required />
+                                    </div>
+               
+        
+                                    <div class="form-group">
+                                        <label class="col-md-4">Option2</label>
+                                        <input ngModel #deadline="ngModel" id="Option2" type="text" name="Option2" class="form-control"
+                                        placeholder="Option2..." required />
+                                      </div>
+
+                                      <div class="form-group">
+                                          <label class="col-md-4">Option3</label>
+                                          <input ngModel #deadline="ngModel" id="Option3" type="text" name="Option3" class="form-control"
+                                          placeholder="Option3..." required />
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-md-4">Option4</label>
+                                            <input ngModel #deadline="ngModel" id="Option4" type="text" name="Option4" class="form-control"
+                                            placeholder="Option4..." required />
+                                          </div>
+
+                                 <div class="form-group">
+                                        <label for="col-md-4">Answer</label>
+                                        <select class="form-control" ngModel #type="ngModel" name="answer" id="answer">
+                                            <option value="1">1 </option>
+                                            <option value="2">2</option>
+                                            <option value="3">3 </option>
+                                            <option value="4">4</option>
+                                        </select>
+                                      </div>
+            
+        
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary mr-2" [disabled]="form.invalid">
+                                        Save
+                                      </button>
+                            </div>
+                          </form>
+                        </div>
+                  
+                </div>
+            
+              </div>  
+</div>

@@ -1,0 +1,29 @@
+<div class="main">
+    <div id="div1" class="mb-5">
+        <h1 style="color: steelblue">Event Manage</h1>
+    </div>
+
+    <!--tab panel-->
+    <ngb-tabset justify="justified">
+
+        <ngb-tab title="All Events">
+            <ng-template ngbTabContent>
+                <all-events></all-events>
+            </ng-template>
+        </ngb-tab>
+
+        <ngb-tab title="Add Events">
+            <ng-template ngbTabContent>
+                <add-event></add-event>
+            </ng-template>
+        </ngb-tab>
+
+        <ngb-tab title="Registered Students">
+            <ng-template ngbTabContent>
+                <registered-students></registered-students>
+            </ng-template>
+        </ngb-tab>
+
+    </ngb-tabset>
+
+</div>

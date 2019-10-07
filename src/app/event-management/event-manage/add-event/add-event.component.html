@@ -1,0 +1,39 @@
+<div class="mt-2" id="form">
+    <div style="width: 70%; margin-left: 15%">
+        <form ngForm #form="ngForm" (ngSubmit)="addOrUpdate(form)">
+            <div class="form-group">
+                <label for="id" class="">ID</label>
+                <input [(ngModel)]="updateObj2.id" #ID="ngModel" id="id" name="id" type="text" class="form-control form-control-sm" placeholder="Event id" required [readonly]="isUpdate">
+            </div>
+            <div class="form-group">
+                <label for="title" class="">Title</label>
+                <input [(ngModel)]="updateObj2.title" #title="ngModel" title="title" name="title" type="text" class="form-control form-control-sm" placeholder="Event title" required>
+            </div>
+            <div class="form-group">
+                <label for="date" class="">Date</label>
+                <input [(ngModel)]="updateObj2.date" #date="ngModel" id="date" name="date" type="date" class="form-control form-control-sm" required>
+            </div>
+            <div class="form-group">
+                <label for="description" class="">Description</label>
+                <textarea [(ngModel)]="updateObj2.description" #description="ngModel" rows="10" id="description" name="description" class="form-control form-control-sm" required>
+                    </textarea>
+            </div>
+            <div class="form-group">
+                <label for="empId" class="">Employee Id</label>
+                <input [(ngModel)]="updateObj2.employeeId" #empId="ngModel" id="empId" name="empId" type="empId" class="form-control form-control-sm" placeholder="Employee Id" required>
+            </div>
+
+            <div class="mt-2">
+                <button *ngIf="!isUpdate" class="btn btn-primary btn-sm mr-2" [disabled]="form.invalid" type="submit">
+                        ADD
+                    </button>
+                <button *ngIf="isUpdate" id="updatebtn" class="btn btn-success btn-sm mr-2" type="submit">
+                        UPDATE
+                    </button>
+                <button class="btn btn-dark btn-sm" type="reset">
+                        RESET
+                    </button>
+            </div>
+        </form>
+    </div>
+</div>

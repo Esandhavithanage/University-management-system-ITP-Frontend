@@ -1,0 +1,97 @@
+<div class="mx-auto" id="div1">
+    <h1>Register Employee</h1>
+</div>
+<div>
+
+    <p>
+        <button class="btn btn-secondary btn-sm mt-3" (click)="register(popupContent2)">
+      Register Employee
+    </button>
+    </p>
+
+
+    <div id="div4" class="mt-5 mr-2">
+        <table datatable="" [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table table-sm" style="width: 100%">
+            <thead class="thead-light">
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">NIC</th>
+                    <th scope="col">Gender</th>
+                    <th scope="col">Address</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Type</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Password</th>
+                    <th scope="col">Salary ID</th>
+                    <th scope="col">Timetable ID</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let e of employee">
+                    <td> {{ e.id }} </td>
+                    <td> {{ e.name }} </td>
+                    <td> {{ e.nic }} </td>
+                    <td> {{ e.gender }} </td>
+                    <td> {{ e.address }} </td>
+                    <td> {{ e.email }} </td>
+                    <td> {{ e.type }} </td>
+                    <td> {{ e.title }} </td>
+                    <td> {{ e.pwd }} </td>
+                    <td> {{ e.salId }} </td>
+                    <td> {{ e.timeTableId }} </td>
+                    <td>
+                        <button class="btn btn-outline-success btn-sm mr-1" (click)="updateBtn(e, popupContent2)">
+              Update
+            </button>
+                        <button class="btn btn-outline-danger btn-sm" (click)="deleteBtn(e, deleteConfirm)">
+              Delete
+            </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div>
+            <p>Total Records : {{ totalRecords }}</p>
+        </div>
+    </div>
+
+    <!--update-->
+    <ng-template #popupContent2>
+
+        <div class="modal-header">
+            <h4 *ngIf="!isUpdate" class="modal-title" id="modal-basic-title">Register Employee</h4>
+            <h4 *ngIf="isUpdate" class="modal-title" id="modal-basic-title">Update Employee</h4>
+            <button type="button" class="close" aria-label="Close" (click)="close()">
+                      <span aria-hidden="true">&times;</span>
+                  </button>
+        </div>
+        <div class="modal-body">
+            <register-emp [updateObj]="updateObj" [isUpdate]="isUpdate"></register-emp>
+        </div>
+
+    </ng-template>
+
+    <!--delete confirm model-->
+    <ng-template #deleteConfirm>
+
+        <div class="modal-header">
+            <h4 class="modal-title" id="modal-title">Record deletion</h4>
+            <button type="button" class="close" aria-label="Close" (click)="close()">
+              <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <p>
+                <strong>Are you sure you want to delete this record?</strong> <br>
+                <span class="text-warning">This record will be permanently deleted.</span>
+            </p>
+            <span *ngIf="isDeleted" class="text-danger">Record not deleted. Something went wrong.</span>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-outline-dark btn-sm" (click)="close()">Close</button>
+            <button type="button" class="btn btn-danger btn-sm" ngbAutofocus (click)="delete()">Delete</button>
+        </div>
+
+    </ng-template>

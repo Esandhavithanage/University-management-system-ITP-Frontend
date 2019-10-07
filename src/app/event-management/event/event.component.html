@@ -1,0 +1,23 @@
+<h1>Events</h1>
+
+<ul class="list-group list-group-flush">
+  <li *ngFor="let event of events" class="list-group-item">
+    <div class="col-8">
+      <div class="card" style="width: 50rem;">
+        <div class="card-body">
+          <h5 class="card-title"> {{ event.title }} </h5>
+          <p> {{ event.description }} </p>
+          <br>
+          <p>Date : {{ event.date }} </p>
+          <button class="btn btn-primary btn-sm" (click)="register(event, popupContent)">Register</button>
+        </div>
+      </div>
+
+    </div>
+  </li>
+  
+</ul>
+
+<ng-template #popupContent>
+  <register [currentEvent]="currentEvent"></register>
+</ng-template>

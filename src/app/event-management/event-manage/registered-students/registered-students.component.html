@@ -1,0 +1,27 @@
+<div id="div4" class="mt-5 mr-2 table-responsive">
+    <table class="table table-sm">
+        <thead class="thead-light">
+            <tr>
+                <th scope="col">Event</th>
+                <th scope="col">Student</th>
+                <th scope="col">Date</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let rStudent of rStudents">
+                <td> {{ rStudent.eventName }} </td>
+                <td> {{ rStudent.studentName }}</td>
+                <td> {{ rStudent.date }} </td>
+                <td>
+                    <button class="btn btn-outline-danger btn-sm" (click)="deleteBtn2(rStudent)">
+                            Delete
+                        </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div>
+        <p>Total Records : {{ totalRecords }}</p>
+    </div>
+</div>

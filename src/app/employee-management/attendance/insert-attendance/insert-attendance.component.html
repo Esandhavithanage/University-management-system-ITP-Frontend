@@ -1,0 +1,48 @@
+<div class="mb-5" id="addForm">
+    <div class="card card-body">
+        <form ngForm #form="ngForm" name="addAttendanceForm" (ngSubmit)="addOrUpdate(form)">
+            <div class="form-group">
+                <label for="empId">Employee ID </label>
+                <input class="form-control form-control-sm" [(ngModel)]="updateObj2.empId" #empId="ngModel" type="text" id="empId" name="empId" placeholder="Your Id" required>
+                <p *ngIf="empIdError" style="color: red; float:right">Invalid employee Id.</p>
+            </div>
+            <div class="form-group">
+                <label for="empId">Date</label>
+                <div class="input-group">
+                    <input class="form-control" placeholder="yyyy-mm-dd" name="dp" [(ngModel)]="date" ngbDatepicker #d="ngbDatepicker">
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary" (click)="d.toggle()" type="button">
+                            <i class="far fa-calendar-alt"></i>
+                        </button>
+                    </div>
+                </div>
+                <div>
+                    <p *ngIf="dateError" style="color: red; float:right">Date is required</p>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="aTime">Arrival time </label>
+                <ngb-timepicker [(ngModel)]="atime" size="small" [meridian]="meridian" name="atime"></ngb-timepicker>
+            </div>
+            <div class="form-group">
+                <label for="eTime">Exit time </label>
+                <ngb-timepicker [(ngModel)]="etime" size="small" [meridian]="meridian" name="etime"></ngb-timepicker>
+            </div>
+            <div>
+                <p *ngIf="inserted" style="color: green">Inserted</p>
+                <p *ngIf="updated" style="color: green">Updated</p>
+                <p style="color: red"> {{ error }} </p>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-sm btn-primary mr-2" *ngIf="!isUpdate" type="submit" [disabled]="form.invalid">
+                    ADD
+                </button>
+                <button class="btn btn-sm btn-primary mr-2" *ngIf="isUpdate" type="submit" [disabled]="form.invalid">
+                    UPDATE
+                </button>
+                <button class="btn btn-sm btn-dark" type="reset">RESET</button>
+            </div>
+        </form>
+    </div>
+
+</div>

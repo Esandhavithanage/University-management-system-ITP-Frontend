@@ -1,0 +1,126 @@
+<div id="div2" class="mt-5">
+
+    <div id="div3">
+        <button class="btn btn-outline-dark btn-sm mb-2" type="button" (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="isCollapsed" aria-controls="searchForm">
+            Search for a time peroid..
+        </button>
+        <div id="searchForm" [ngbCollapse]="!isCollapsed">
+            <div class="card card-body">
+                <form ngForm #searchForm="ngForm">
+                    <ngb-datepicker #dp (select)="onDateSelection($event)" [displayMonths]="2" [dayTemplate]="t" outsideDays="hidden">
+                    </ngb-datepicker>
+
+                    <ng-template #t let-date let-focused="focused">
+                        <span class="custom-day" [class.focused]="focused" [class.range]="isRange(date)" [class.faded]="isHovered(date) || isInside(date)" (mouseenter)="hoveredDate = date" (mouseleave)="hoveredDate = null">
+                            {{ date.day }}
+                        </span>
+                    </ng-template>
+                    <div>
+                        <button class="btn btn-primary btn-sm mt-2" (click)="isCollapsed = !isCollapsed; search()" type="button" aria-controls="searchForm">
+                            Search incomes
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<div id="div4" class="mt-5 mr-2" *ngIf="tableActive && totalRecords > 0">
+
+    <div style="text-align: center;">
+        <h4>Income from {{ fromDate2 }} to {{ toDate2 }}</h4>
+    </div>
+
+    <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table row-border hover" style="width: 100%">
+        <thead class="thead-light">
+            <tr>
+                <th scope="col">Course ID</th>
+                <th scope="col">Date</th>
+                <th scope="col">Amount</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let income of filteredIncomes">
+                <td> {{ income.courseId }} </td>
+                <td> {{ income.date }} </td>
+                <td> {{ income.amount }} </td>
+                <td>
+                    <button class="btn btn-outline-success btn-sm mr-1" (click)="updateBtn(income, popupContent2)">
+                        Update
+                    </button>
+                    <button class="btn btn-outline-danger btn-sm" (click)="deleteBtn(income, deleteConfirm)">
+                        Delete
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div>
+        <p>Total records : {{ totalRecords }} </p>
+        <p>Total income : {{ totalAmount | currency:'':'Rs.' }}</p>
+    </div>
+
+
+    <div>
+        <button (click)="getReport(popupContent)" class="btn btn-info btn-sm mr-2">Summary</button>
+        <button class="btn btn-success btn-sm" printSectionId="div4" ngxPrint>Detailed Report</button>
+    </div>
+
+</div>
+
+<div *ngIf="totalRecords == 0 && tableActive">
+    <p style="color: brown;">No records.</p>
+</div>
+
+
+<!--print summary-->
+<ng-template #popupContent>
+    <income-report [printObj]="printObj"></income-report>
+</ng-template>
+
+<!--update-->
+<ng-template #popupContent2>
+    <div class="model">
+        <div class="modal-header">
+            <h4 class="modal-title" id="modal-basic-title">Update Income</h4>
+            <button type="button" class="close" aria-label="Close" (click)="close()">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+        </div>
+        <div class="modal-body">
+            <update-income [updateObj]="updateObj" [isUpdate]="isUpdate" [component]="component"></update-income>
+        </div>
+
+    </div>
+
+</ng-template>
+
+
+<!--delete confirm model-->
+<ng-template #deleteConfirm>
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-title">Record deletion</h4>
+        <button type="button" class="close" aria-label="Close" (click)="close()">
+                <span aria-hidden="true">&times;</span>
+            </button>
+    </div>
+    <div class="modal-body">
+        <p>
+            <strong>Are you sure you want to delete this record?</strong> <br>
+            <span class="text-warning">This record will be permanently deleted.</span>
+        </p>
+        <span *ngIf="isDeleted" class="text-danger">Record not deleted. Something went wrong.</span>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark btn-sm" (click)="close()">Close</button>
+        <button type="button" class="btn btn-danger btn-sm" ngbAutofocus (click)="delete()">Delete</button>
+    </div>
+
+
+</ng-template>
