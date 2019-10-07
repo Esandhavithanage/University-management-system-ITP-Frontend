@@ -49,7 +49,7 @@ export class AllEventsComponent implements OnInit {
       employeeId: event.employeeId
     };
 
-    this.modelService.open(popupElement, { centered: true });
+    this.modelService.open(popupElement, { centered: true, scrollable: true });
 
   }
 

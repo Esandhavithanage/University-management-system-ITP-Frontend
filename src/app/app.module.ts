@@ -74,6 +74,10 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { AllEventsComponent } from './event-management/event-manage/all-events/all-events.component';
 import { AddEventComponent } from './event-management/event-manage/add-event/add-event.component';
 import { RegisteredStudentsComponent } from './event-management/event-manage/registered-students/registered-students.component';
+import { AuthGuardService } from './services/authguards/auth-guard.service';
+import { StudentGuardService } from './services/authguards/student-guard.service';
+import { EmpGuardService } from './services/authguards/emp-guard.service';
+import { NonempGuardService } from './services/authguards/nonemp-guard.service';
 
 
 
@@ -168,7 +172,11 @@ import { RegisteredStudentsComponent } from './event-management/event-manage/reg
     AllCoursesComponent,
     RegisterEmployeeComponent,
     AttendanceComponent,
-    AllEventsComponent
+    AllEventsComponent,
+    AuthGuardService,
+    StudentGuardService,
+    EmpGuardService,
+    NonempGuardService
   ],
   schemas: [
   ],

@@ -20,24 +20,26 @@
 <body>
     <div class="cover">
         <div class="error">
-            <img src="src/assets/images/screen.png" alt="" width="80px">
+            <img src="assets/images/svg/screen.png" alt="" width="80px">
             <br> resolution error
         </div>
 
     </div>
     <div id="container">
+
         <div class="left">
             <div id="sidebar">
+                <img class="dash_logo" src="assets/images/svg/Asset2.svg" alt="">
                 <div id="nav">
-                    <li title="Dashboard">Dashboard</li>
-                    <li onclick="topmenu(1)" title="Student Management">Student</li>
-                    <li onclick="topmenu(2)" title="Employee Management">Employee</li>
-                    <li onclick="topmenu(3)" title="Financial Management">Financial</li>
-                    <li onclick="topmenu(4)" title="Event Management">Event</li>
-                    <li onclick="topmenu(5)" title="NewsFeed and Messages">NewsFeed</li>
-                    <li onclick="topmenu(6)" title="Resources Management">Resources</li>
-                    <li onclick="topmenu(7)" title="Assignment and Examination">Exam</li>
-                    <li onclick="topmenu(8)" title="Library Management">Library</li>
+                    <li onclick="topmenu(1)" title="Dashboard">Dashboard</li>
+                    <li onclick="topmenu(2)" title="Student Management">Student</li>
+                    <li onclick="topmenu(3)" title="Employee Management">Employee</li>
+                    <li onclick="topmenu(4)" title="Financial Management">Financial</li>
+                    <li onclick="topmenu(5)" title="Event Management">Event</li>
+                    <li onclick="topmenu(6)" title="NewsFeed and Messages">NewsFeed</li>
+                    <li onclick="topmenu(7)" title="Resources Management">Resources</li>
+                    <li onclick="topmenu(8)" title="Assignment and Examination">Exam</li>
+                    <li onclick="topmenu(9)" title="Library Management">Library</li>
                 </div>
 
             </div>
@@ -48,47 +50,51 @@
                 <div id="top_left_menu">
 
                     <ul id="1">
+                        <li><a routerLink="dashboard">Dashboard</a></li>
+                    </ul>
+
+                    <ul id="2">
                         <li><a routerLink="student-student">Students</a></li>
                         <li><a routerLink="student-courses">Courses</a></li>
                         <li><a routerLink="student-payments">Payments</a></li>
                     </ul>
 
-                    <ul id="2">
+                    <ul id="3">
                         <li><a routerLink="employee-register">Employees</a></li>
                         <li><a routerLink="employee-attendance">Attendance</a></li>
                         <li><a routerLink="employee-mRequests">Money Requests</a></li>
                     </ul>
 
-                    <ul id="3">
+                    <ul id="4">
                         <li><a routerLink="financial-cal-salary">Salary</a> </li>
                         <li><a routerLink="financial-manage-income">Incomes</a></li>
                         <li><a routerLink="financial-manage-expences">Expences</a></li>
                         <li><a routerLink="financial-moneyRequests">Money Requests</a></li>
                     </ul>
 
-                    <ul id="4">
+                    <ul id="5">
                         <li><a routerLink="event-view">Events</a></li>
                         <li><a routerLink="event-manage">Manage Events</a></li>
                     </ul>
 
-                    <ul id="5">
+                    <ul id="6">
                         <li>Add Notice</li>
                         <li>View Notice</li>
                     </ul>
 
-                    <ul id="6">
+                    <ul id="7">
                         <li><a routerLink="manage-resources">Manage Resources</a></li>
                         <li>2</li>
                         <li>3</li>
                     </ul>
 
-                    <ul id="7">
+                    <ul id="8">
                         <li>1</li>
                         <li>2</li>
                         <li>2</li>
                     </ul>
 
-                    <ul id="8">
+                    <ul id="9">
                         <li><a routerLink="library-manageBook">Manage Books</a></li>
                         <li><a routerLink="library-borrowBook">Borrow Books</a></li>
                     </ul>
@@ -99,7 +105,7 @@
                     <span class="welcome">welcome</span>
                     <span class="name">Admin</span>
                     <div class="avatar_place">
-                        <img src="src/assets/images/avatar.png" class="avatar" alt="">
+                        <img src="assets/images/avatar.png" class="avatar" alt="">
 
                         <div class="avatar_menu">
                             <a href="#">Profile</a>

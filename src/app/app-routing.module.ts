@@ -27,12 +27,19 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { StudentComponent } from './student-management/student/student.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { LoginComponent } from './login/login.component';
 
+import { AuthGuardService } from './services/authguards/auth-guard.service';
 
 const routes: Routes = [
-  { path: '', component: DashboardComponent },
+
+  { path: '', component: LoginComponent},
+
+  // dashboard
+  { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuardService] },
+
   // financial routes
-  { path: 'financial-cal-salary', component: CalSalaryComponent },
+  { path: 'financial-cal-salary', component: CalSalaryComponent, canActivate: [] },
   { path: 'financial-manage-income', component: IncomeManageComponent },
   { path: 'financial-manage-expences', component: ExpencesManageComponent },
   { path: 'financial-moneyRequests', component: ARMoneyRequestsComponent },

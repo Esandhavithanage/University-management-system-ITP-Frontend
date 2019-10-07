@@ -17,6 +17,11 @@ import {
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
+  public static log: boolean = false;
+  public static admin: boolean = false;
+  public static emp: boolean = false;
+  public static nonemp: boolean = false;
+  public static student: boolean = false;
 
   constructor(private slimLoadingBarService: SlimLoadingBarService, private router: Router) {
     this.router.events.subscribe((event: Event) => {
@@ -40,11 +45,19 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
+    if(localStorage.getItem('currentUser') == null){
 
+    }else{
+      
+    }
     
   }
 
+
   logout(){
+    console.log("logout");
+    localStorage.removeItem('currentUser');
+    this.router.navigate(['']);
     
   }
 
