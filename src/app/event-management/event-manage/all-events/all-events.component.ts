@@ -16,6 +16,7 @@ export class AllEventsComponent implements OnInit {
   totalRecords = 0;
   tempObj;
   deleteEventId: string = null;
+  isDeleted: boolean = false;
 
   constructor(private eventService: EventService,
     private config: NgbModalConfig,
@@ -54,6 +55,7 @@ export class AllEventsComponent implements OnInit {
 
   deleteBtn1(event: Events, popupElement) {
     console.log(event);
+    this.isDeleted = false;
 
     this.deleteEventId = event.eventId;
 
@@ -64,15 +66,32 @@ export class AllEventsComponent implements OnInit {
   }
 
   delete(){
-    this.eventService.deleteEvents(this.deleteEventId);
-    for (let i in this.events) {
-      if (this.events[i].eventId == this.deleteEventId) {
-        this.events.splice(parseInt(i), 1);
-        this.totalRecords--;
+    this.eventService.deleteEvents(this.deleteEventId).subscribe(result => {
+      if(result == "success"){
+        for (let i in this.events) {
+          if (this.events[i].eventId == this.deleteEventId) {
+            this.events.splice(parseInt(i), 1);
+            this.totalRecords--;
+          }
+        }
+        this.modelService.dismissAll();
+      }else{
+        this.isDeleted = true;
       }
-    }
+    });
+    
   }
 
+  updateRow(obj){
+    console.log("update raw called");
+    for(let i in this.events){
+      if(this.events[i].eventId == obj.eventId){
+        this.events[i] = obj;
+      }
+    }
+    this.modelService.dismissAll();
+    this.isUpdate = false;
+  }
 
   close(){
     this.modelService.dismissAll();

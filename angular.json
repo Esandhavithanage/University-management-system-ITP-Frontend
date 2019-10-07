@@ -25,27 +25,16 @@
                         ],
                         "styles": [
                             "node_modules/bootstrap/dist/css/bootstrap.min.css",
-                            "node_modules/datatables.net-dt/css/jquery.dataTables.css",
                             "node_modules/font-awesome/css/font-awesome.css",
-                            "src/styles.scss",
-                            "src/assets/js/bootstrap.bundle.js",
-                            "src/assets/vendor/fontawesome-free/css/all.min.css",
-                            "src/assets/css/sb-admin-2.css",
-                            "src/assets/css/bookshelf.css"
+                            "node_modules/datatables.net-dt/css/jquery.dataTables.css",
+                            "src/styles.css"
                         ],
                         "scripts": [
                             "node_modules/jquery/dist/jquery.min.js",
+                            "node_modules/bootstrap/dist/js/bootstrap.min.js",
                             "node_modules/jquery/dist/jquery.js",
                             "node_modules/datatables.net/js/jquery.dataTables.js",
-                            "node_modules/bootstrap/dist/js/bootstrap.min.js",
-                            "src/assets/js/print-sal-receipt.js",
-                            "src/assets/vendor/jquery/jquery.min.js",
-                            "src/assets/vendor/bootstrap/js/bootstrap.bundle.min.js",
-                            "src/assets/vendor/jquery-easing/jquery.easing.min.js",
-                            "src/assets/js/sb-admin-2.min.js",
-                            "src/assets/vendor/chart.js/Chart.min.js",
-                            "src/assets/js/demo/chart-area-demo.js",
-                            "src/assets/js/demo/chart-pie-demo.js"
+                            "src/assets/js/main.js"
                         ]
                     },
                     "configurations": {

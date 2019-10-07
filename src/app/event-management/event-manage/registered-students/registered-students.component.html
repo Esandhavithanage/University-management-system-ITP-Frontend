@@ -14,7 +14,7 @@
                 <td> {{ rStudent.studentName }}</td>
                 <td> {{ rStudent.date }} </td>
                 <td>
-                    <button class="btn btn-outline-danger btn-sm" (click)="deleteBtn2(rStudent)">
+                    <button class="btn btn-outline-danger btn-sm" (click)="deleteBtn(rStudent, deleteConfirm)">
                             Delete
                         </button>
                 </td>
@@ -25,3 +25,27 @@
         <p>Total Records : {{ totalRecords }}</p>
     </div>
 </div>
+
+
+<!--delete confirm model-->
+<ng-template #deleteConfirm>
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-title">Record deletion</h4>
+        <button type="button" class="close" aria-label="Close" (click)="close()">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+    </div>
+    <div class="modal-body">
+        <p>
+            <strong>Are you sure you want to delete this record?</strong> <br>
+            <span class="text-warning">This record will be permanently deleted.</span>
+        </p>
+        <span *ngIf="isDeleted" class="text-danger">Record not deleted. Something went wrong.</span>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark btn-sm" (click)="close()">Close</button>
+        <button type="button" class="btn btn-danger btn-sm" ngbAutofocus (click)="delete()">Delete</button>
+    </div>
+
+</ng-template>

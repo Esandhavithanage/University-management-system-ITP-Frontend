@@ -167,7 +167,8 @@ import { RegisteredStudentsComponent } from './event-management/event-manage/reg
     AllStudentComponent,
     AllCoursesComponent,
     RegisterEmployeeComponent,
-    AttendanceComponent
+    AttendanceComponent,
+    AllEventsComponent
   ],
   schemas: [
   ],

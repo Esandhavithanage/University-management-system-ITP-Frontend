@@ -9,23 +9,28 @@
     <form ngForm #form="ngForm" (ngSubmit)="register(form)">
         <div class="form-group">
             <label for="eventId">Event Id</label>
-            <input [(ngModel)]="currentEvent.eventId" #eventId="ngModel" type="text" class="form-control" id="eventId" name="eventId"
-                placeholder="Enter event id" required readonly>
+            <input [(ngModel)]="currentEvent.eventId" #eventId="ngModel" type="text" class="form-control" id="eventId" name="eventId" placeholder="Enter event id" required readonly>
         </div>
         <div class="form-group">
             <label for="studentId">Student Id</label>
-            <input ngModel #studentId="ngModel" type="text" class="form-control" id="studentId" name="studentId"
-                placeholder="Enter student id" required>
+            <input ngModel #studentId="ngModel" type="text" class="form-control" id="studentId" name="studentId" placeholder="Enter student id" required>
         </div>
         <div class="form-group">
             <label for="date">Date</label>
-            <input ngModel #date="ngModel" type="date" class="form-control" id="date" name="date" required>
+            <div class="input-group">
+                <input class="form-control" placeholder="yyyy-mm-dd" name="date" [(ngModel)]="date" ngbDatepicker #d="ngbDatepicker">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-secondary" (click)="d.toggle()" type="button">
+                        <i class="far fa-calendar-alt"></i>
+                    </button>
+                </div>
+            </div>
         </div>
         <div>
-            <button class="btn btn-primary mr-2" type="submit" [disabled]="form.invalid">
+            <button class="btn btn-primary btn-sm mr-2" type="submit" [disabled]="form.invalid">
                 REGISTER
             </button>
-            <button class="btn btn-dark" type="reset">
+            <button class="btn btn-dark btn-sm" type="reset">
                 RESET
             </button>
         </div>
@@ -33,5 +38,5 @@
 
 </div>
 <div class="modal-footer">
-    <button type="button" class="btn btn-danger" (click)="close()">Cansel</button>
+    <button type="button" class="btn btn-outline-dark btn-sm" (click)="close()">Cansel</button>
 </div>

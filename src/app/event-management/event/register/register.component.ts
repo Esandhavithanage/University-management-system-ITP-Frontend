@@ -4,6 +4,8 @@ import { NgForm } from '@angular/forms';
 import { EventService } from 'src/app/services/event.service';
 import { Events } from 'src/app/models/Event';
 
+
+
 @Component({
   selector: 'register',
   templateUrl: './register.component.html',
@@ -11,6 +13,7 @@ import { Events } from 'src/app/models/Event';
 })
 export class RegisterComponent implements OnInit {
   @Input('currentEvent') currentEvent: Events; 
+  date;
 
   constructor(private modelService: NgbModal, private eventService: EventService) { }
 

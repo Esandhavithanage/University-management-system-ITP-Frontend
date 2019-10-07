@@ -4,6 +4,7 @@
             <div class="form-group">
                 <label for="id" class="">ID</label>
                 <input [(ngModel)]="updateObj2.id" #ID="ngModel" id="id" name="id" type="text" class="form-control form-control-sm" placeholder="Event id" required [readonly]="isUpdate">
+                <p *ngIf="eventIdError" style="color: red">Event Id is already exists.</p>
             </div>
             <div class="form-group">
                 <label for="title" class="">Title</label>
@@ -11,7 +12,15 @@
             </div>
             <div class="form-group">
                 <label for="date" class="">Date</label>
-                <input [(ngModel)]="updateObj2.date" #date="ngModel" id="date" name="date" type="date" class="form-control form-control-sm" required>
+                <div class="input-group">
+                    <input class="form-control" placeholder="yyyy-mm-dd" name="date" [(ngModel)]="date" ngbDatepicker #d="ngbDatepicker">
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary" (click)="d.toggle()" type="button">
+                            <i class="far fa-calendar-alt"></i>
+                        </button>
+                    </div>
+                </div>
+                <p *ngIf="dateError" style="color: red">Date is required</p>
             </div>
             <div class="form-group">
                 <label for="description" class="">Description</label>
@@ -21,8 +30,12 @@
             <div class="form-group">
                 <label for="empId" class="">Employee Id</label>
                 <input [(ngModel)]="updateObj2.employeeId" #empId="ngModel" id="empId" name="empId" type="empId" class="form-control form-control-sm" placeholder="Employee Id" required>
+                <p *ngIf="empIdError" style="color: red">Employee Id Invalid</p>
             </div>
-
+            <div>
+                <p style="color: red"> {{ error }} </p>
+                <p *ngIf="inserted" style="color: green">Inserted</p>
+            </div>
             <div class="mt-2">
                 <button *ngIf="!isUpdate" class="btn btn-primary btn-sm mr-2" [disabled]="form.invalid" type="submit">
                         ADD

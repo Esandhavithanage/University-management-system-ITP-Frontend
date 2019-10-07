@@ -16,9 +16,8 @@ export class EventService {
 
   addEvents(obj){
     console.log("service " + obj);
-    this.http.post(`${this.uri}/addEvents`, obj).subscribe(result => {
-      console.log(result);
-    });
+    return this.http.post(`${this.uri}/addEvents`, obj);
+
   }
 
   updateEvents(obj){
@@ -26,9 +25,8 @@ export class EventService {
   }
 
   deleteEvents(id){
-    this.http.get(`${this.uri}/deleteEvents/${id}`).subscribe(result => {
-      console.log(result);
-    });
+    return this.http.get(`${this.uri}/deleteEvents/${id}`);
+
   }
 
   registerEvent(obj){
@@ -43,9 +41,8 @@ export class EventService {
 
   deleteRStudent(eventId, studentId){
     console.log("called");
-    this.http.get(`${this.uri}/deleteRStudents/${eventId}/${studentId}`).subscribe(result => {
-      console.log(result);
-    });
+    return this.http.get(`${this.uri}/deleteRStudents/${eventId}/${studentId}`);
+
   }
 
 }
