@@ -14,7 +14,16 @@
                 <tbody>
                     <tr *ngFor="let date of ratedetails">
                         <td>{{ date.name }}</td>
-                        <td>{{ date.rate/date.sum }}</td>
+                        <td>
+
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 449.59 421.5" width="110px" height="110px"><defs>
+                                        <style>.cls-1{fill:#ffdd40;}.cls-2{font-size:120px;fill:#fff;font-family:Roboto-Regular, Roboto;}</style>
+                                        </defs><title>star</title><g id="Layer_2" data-name="Layer 2"><g id="Layer_1-2" data-name="Layer 1">
+                                        <polygon class="cls-1" points="224.8 0 277.86 161 449.59 161 310.66 260.5 363.73 421.5 224.8 321.99 85.86 421.5 138.93 260.5 0 161 171.73 161 224.8 0"/>
+                                        <text  id ="display" class="cls-2" transform="translate(186.59 279.59)">{{ date.rate/date.sum }}</text>
+                                        </g></g></svg>
+
+                        </td>
                     </tr>
                 </tbody>
               </table>
