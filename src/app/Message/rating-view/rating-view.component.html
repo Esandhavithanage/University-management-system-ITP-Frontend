@@ -1,0 +1,52 @@
+<div>
+        <form ngForm #form="ngForm" name="addAssignment" (ngSubmit)="submit(form)">  
+            <table> 
+                <td style="width: 25%;"> 
+                <div class="form-group">
+                    <label class="col-md-4">start date</label>
+                    <input ngModel #fromdate="ngModel" id="fromdate" type="date" name="fromdate" class="form-control"
+                    placeholder="from..." required/>
+                  </div>
+                </td>
+                <td style="width: 25%;">
+                <div class="form-group">
+                  <label class="col-md-4">Deadline</label>
+                  <input ngModel #to="ngModel" id="to" type="date" name="to" class="form-control"
+                  placeholder="to..." required/>
+                </div>
+                </td>
+                <td style="width: 25%;">
+                <div class="form-group">
+                    <label for="sel1">subject</label>
+                    <select ngModel #lec="ngModel" class="form-control" id="lec" name="lec">
+                        <option *ngFor="let x of lecs" value="{{x.employeeId}}">{{x.name}} </option>
+                    </select>
+                  </div>
+                </td>
+                <td style="width: 25%;">       
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary mr-2" [disabled]="form.invalid">
+                            Search
+                    </button>
+                </div>
+            </td>
+            </table>
+            <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <td>Description</td>
+                        <td>Rate</td>
+
+                    </tr>
+                    </thead>
+                  
+                    <tbody>
+                        <tr *ngFor="let date of tabaldate">
+                            <td>{{ date.description }}</td>
+                            <td>{{ date.rate }}</td>
+                        </tr>
+                    </tbody>
+                  </table>
+         </form>
+         <a (click) = "genarateReport()" class="btn btn-primary">Download Rating report</a>
+</div>

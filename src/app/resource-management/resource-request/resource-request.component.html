@@ -1,0 +1,40 @@
+<div>
+        <div class="card">
+                <div class="card-body">
+
+                    <ng-template [ngIf]="formType == false" [ngIfElse]="edit">
+                        <div>
+                            <form ngForm #form="ngForm" name="addAssignment" (ngSubmit)="add(form)">
+                
+
+                                <div class="form-group">
+                                  <label class="col-md-4">title</label>
+                                  <input ngModel #title="ngModel" id="title" type="text" name="title" class="form-control"
+                                  placeholder="Title..." required/>
+                                </div>
+               
+                        
+                                <div class="form-group">
+                                    <label class="col-md-4">start date</label>
+                                    <input ngModel #startdate="ngModel" id="startdate" type="date" name="startdate" class="form-control"
+                                    placeholder="Startdate..." required/>
+                                  </div>
+            
+                                <div class="form-group">
+                                  <label class="col-md-4">Deadline</label>
+                                  <input ngModel #deadline="ngModel" id="deadline" type="date" name="deadline" class="form-control"
+                                  placeholder="Deadline..." required/>
+                                </div>
+                                  
+                       
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-primary mr-2" [disabled]="form.invalid">
+                                            create assyment
+                                    </button>
+                                </div>
+                              </form>
+                        </div>
+                      </ng-template>
+                      </div>
+                      </div>
+</div>

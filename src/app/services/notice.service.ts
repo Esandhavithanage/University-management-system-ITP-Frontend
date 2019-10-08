@@ -38,4 +38,32 @@ export class NoticeService {
   Deletenoticet(id){
    return this.http.get(`${this.uri}/delete/${id}`);
   }
+
+  Addrating(comment,rating,studentId,employeeId){
+   const obj={
+    comment:comment,
+    rating:rating,
+    studentId:studentId,
+    employeeId:employeeId
+    }
+    return this.http.post(`${this.uri}/addrating`,obj);
+   }
+
+   getEmployee(){
+    return this.http.get(`${this.uri}/getEmployeeForRating`);
+   }
+
+   getRatingreport(){
+    return this.http.get(`${this.uri}/getRatingreport`);
+   }
+
+   getFeedBack(todate,fromdate,eid){
+    const obj={
+      todate:todate,
+      fromdate:fromdate,
+      employeeId:eid
+      }
+    return this.http.post(`${this.uri}/getFeedBack`,obj);
+   }
+
 }

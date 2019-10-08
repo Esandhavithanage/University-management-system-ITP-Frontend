@@ -56,6 +56,6 @@ console.log(id);
 
   downloadmarks(assinmentId){
     console.log(assinmentId);
-    this.router.navigate(['/QuizMarksReport',assinmentId])
+    this.router.navigate(['/QuizMarksReport',assinmentId]);
   }
 }

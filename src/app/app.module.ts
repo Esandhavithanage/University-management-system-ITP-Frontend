@@ -7,7 +7,8 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgxPrintModule } from 'ngx-print';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { StorageServiceModule} from 'angular-webstorage-service'
+import { StorageServiceModule} from 'angular-webstorage-service';
+import { BarRatingModule } from "ngx-bar-rating";
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -55,6 +56,10 @@ import { ResourcesService } from './services/resources.service';
 import { AttendantToQuizComponent } from './AssignmentsExaminations/quiz/attendant-to-quiz/attendant-to-quiz.component';
 import { QuizMarksReportComponent } from './AssignmentsExaminations/assingnment/edit-delet-assingnment/quiz-marks-report/quiz-marks-report.component';
 import { LoginToAssingnmentComponent } from './AssignmentsExaminations/quiz/login-to-assingnment/login-to-assingnment.component';
+import { ResourceRequestComponent } from './resource-management/resource-request/resource-request.component';
+import { RatingComponent } from './Message/rating/rating.component';
+import { RatingViewComponent } from './Message/rating-view/rating-view.component';
+import { RatingReportComponent } from './Message/rating-report/rating-report.component';
 
 @NgModule({
   declarations: [
@@ -92,6 +97,10 @@ import { LoginToAssingnmentComponent } from './AssignmentsExaminations/quiz/logi
     AttendantToQuizComponent,
     QuizMarksReportComponent,
     LoginToAssingnmentComponent,
+    ResourceRequestComponent,
+    RatingComponent,
+    RatingViewComponent,
+    RatingReportComponent,
 
   ],
   imports: [
@@ -105,7 +114,8 @@ import { LoginToAssingnmentComponent } from './AssignmentsExaminations/quiz/logi
     NgxPrintModule,
     FontAwesomeModule,
     RouterModule,
-    StorageServiceModule
+    StorageServiceModule,
+    BarRatingModule
   ],
   providers: [
     FinancialService,

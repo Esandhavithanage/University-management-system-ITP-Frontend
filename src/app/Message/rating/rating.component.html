@@ -1,0 +1,42 @@
+<div>
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <form ngForm #form="ngForm" name="rating" (ngSubmit)="submit(form)">
+
+
+            <div class="col">
+                    Subject      
+                    <select ngModel #lec="ngModel" class="form-control" id="lec" name="lec" [value]="selectsubject">
+                            <option *ngFor="let x of lecs" value="{{x.employeeId}}">{{x.name}}</option>
+                    </select>
+            </div>
+
+            <div class="form-group">
+                    <label for="comment">Comment:</label>
+                    <textarea ngModel #comment="ngModel" class="form-control" rows="5" id="comment" name="comment"></textarea>
+                </div>
+                <br>
+        <table>
+                <td>
+                    Rate :
+                </td>
+                <span class="star-rating star-5">
+                                <input type="radio" name="rating" value="1" (change)="GETdata(1)"><i></i>
+                                <input type="radio" name="rating" value="2" (change)="GETdata(2)"><i></i>
+                                <input type="radio" name="rating" value="3" (change)="GETdata(3)"><i></i>
+                                <input type="radio" name="rating" value="4" (change)="GETdata(4)"><i></i>
+                                <input type="radio" name="rating" value="5" (change)="GETdata(5)"><i></i>
+                              </span>
+        </table>
+       
+            <br>
+                  <div class="form-group">
+                        <button type="submit" class="btn btn-primary mr-2">
+                                Submit 
+                        </button>
+                    </div>
+
+        </form>
+</div>

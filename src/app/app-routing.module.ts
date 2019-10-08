@@ -7,11 +7,15 @@ import { AttendanceComponent } from './employee-management/attendance/attendance
 import { CoursesComponent } from './student-management/courses/courses.component';
 import { StudentPaymentsComponent } from './student-management/student-payments/student-payments.component';
 import { RegisterEmployeeComponent } from './employee-management/register-employee/register-employee.component';
+
 import { MoneyRequestComponent } from './employee-management/money-request/money-request.component';
 import { EventComponent } from './event-management/event/event.component';
 import { EventManageComponent } from './event-management/event-manage/event-manage.component';
+
 import { ManageBookComponent } from './library-management/manage-book/manage-book.component';
 import { BorrowBookComponent } from './library-management/borrow-book/borrow-book.component';
+
+
 import { AddAssingnmentComponent } from './AssignmentsExaminations/assingnment/add-assingnment/add-assingnment.component';
 import { EditDeletAssingnmentComponent } from './AssignmentsExaminations/assingnment/edit-delet-assingnment/edit-delet-assingnment.component';
 import { UplloadAssingnmentComponent } from './AssignmentsExaminations/assingnment/uplload-assingnment/uplload-assingnment.component';
@@ -23,14 +27,21 @@ import { AttendantToQuizComponent } from './AssignmentsExaminations/quiz/attenda
 import { LoginToAssingnmentComponent } from './AssignmentsExaminations/quiz/login-to-assingnment/login-to-assingnment.component'
 import { EditQuizComponent } from './AssignmentsExaminations/quiz/edit-quiz/edit-quiz.component';
 import { ViewQuizComponent } from './AssignmentsExaminations/quiz/view-quiz/view-quiz.component';
+
+
 import { NoticeComponent } from './Message/notice/notice.component';
+import { RatingComponent } from './Message/rating/rating.component';
+import { RatingViewComponent } from './Message/rating-view/rating-view.component';
 import { ViewnoticeComponent } from './Message/viewnotice/viewnotice.component';
+import { RatingReportComponent } from './Message/rating-report/rating-report.component'
 import { ResourceComponent } from './resource-management/resource-management.component';
+
 
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { StudentComponent } from './student-management/student/student.component';
 import { from } from 'rxjs';
+
 
 
 const routes: Routes = [
@@ -78,7 +89,10 @@ const routes: Routes = [
   // messaging and notice routes
   { path: 'manageNotice', component: NoticeComponent },
   { path: 'viewNotice', component: ViewnoticeComponent },
+  { path: 'RatingComponent', component: RatingComponent },
+  { path: 'RatingViewComponent', component: RatingViewComponent },
   { path: 'viewNotice/edit/:id', component: NoticeComponent },
+  { path: 'RatingReportComponent', component: RatingReportComponent},
   
   // resource routes
   { path: 'resource', component: ResourceComponent }
