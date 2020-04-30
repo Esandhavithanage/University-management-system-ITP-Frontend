@@ -30,7 +30,7 @@
     "file-saver": "^2.0.2",
     "font-awesome": "^4.7.0",
     "hammerjs": "^2.0.8",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "mdbootstrap": "^4.8.8",
     "ngx-print": "^1.2.0-beta.2",
     "popper.js": "^1.15.0",
